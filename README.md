@@ -2,11 +2,11 @@
 
 Data Healthcare DAO: FVM space warp hackthon
 
-### Data Healthcare DAO  - contracts:
+### Data Healthcare DAO - contracts:
 
-Repository url: https://github.com/salviega/data-hearthcare-dao-hardhat.git
+Repository url: https://github.com/salviega/data-healthcare-dao-hardhat.git
 
-### Data Healthcare DAO  - backend python:
+### Data Healthcare DAO - backend python:
 
 Repository url: https://github.com/Oriojas/data_healthcare_dao_sensors
 
@@ -21,7 +21,7 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) and [Git](https
 > Clone the repository:
 
 ```
-git clone https://github.com/salviega/data-hearthcare-dao-frontend.git
+git clone https://github.com/salviega/data-healthcare-dao-frontend.git
 ```
 
 > Install dependencies:

@@ -1,0 +1,100 @@
+.home {
+	position: absolute;
+	height: 545.8rem;
+	background-image: url(../../../assets//images/background-home.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
+
+	&__title {
+		width: 71.3rem;
+		height: 19.8rem;
+		margin: 27rem 0rem 3.5rem 17.8rem;
+		visibility: hidden;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 6.4rem;
+		line-height: 7.5rem;
+
+		color: #160637;
+		&:after {
+			content: 'DHD, the DAO \A for Healthcare DATA';
+			visibility: visible;
+			white-space: pre-wrap;
+		}
+	}
+
+	&__subtitle {
+		width: 66.5rem;
+		height: 3.3rem;
+		margin: 0rem 0rem 9.579rem 17.8rem;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 28px;
+
+		color: #8989a2;
+	}
+
+	&-buttons {
+		max-width: max-content;
+		height: 3.3rem;
+		margin: 0rem 0rem 19.4rem 17.8rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2.474rem;
+
+		&__weareable {
+			width: 25.974rem;
+			height: 7.421rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+
+		&__info {
+			width: 25.974rem;
+			height: 7.421rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #ffffff;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #000000;
+		}
+	}
+
+	&-content {
+		width: 181.668rem;
+		height: max-content;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&__logo {
+			width: 111.896rem;
+			height: 88.243rem;
+		}
+
+		&-info {
+		}
+	}
+}
