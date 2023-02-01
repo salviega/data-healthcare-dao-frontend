@@ -1,8 +1,12 @@
-# Data Healthcare DAO
+# Data Healthcare DAO - frontend
 
-Cyclimate: FVM space warp hackthon
+Data Healthcare DAO: FVM space warp hackthon
 
-### Cyclimate backend python:
+### Data Healthcare DAO  - contracts:
+
+Repository url: https://github.com/salviega/data-hearthcare-dao-hardhat.git
+
+### Data Healthcare DAO  - backend python:
 
 Repository url: https://github.com/Oriojas/data_healthcare_dao_sensors
 
@@ -17,7 +21,7 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) and [Git](https
 > Clone the repository:
 
 ```
-git clone https://github.com/salviega/data-hearthcare-dao-fronted.git
+git clone https://github.com/salviega/data-hearthcare-dao-frontend.git
 ```
 
 > Install dependencies:
