@@ -1,4 +1,4 @@
-# Data Healthcare DAO |
+# Data Healthcare DAO
 
 Cyclimate: FVM space warp hackthon
 
@@ -17,19 +17,19 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) and [Git](https
 > Clone the repository:
 
 ```
-git clone https://github.com/salviega/cyclimate-frontend-react.git
+git clone https://github.com/salviega/data-hearthcare-dao-fronted.git
 ```
 
 > Install dependencies:
 
 ```
-npm install
+yarn
 ```
 
 > Run the project:
 
 ```
-npm start
+yarn start
 ```
 
 ## Authors 🏗
