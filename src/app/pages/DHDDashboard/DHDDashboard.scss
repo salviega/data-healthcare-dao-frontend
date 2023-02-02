@@ -1,7 +1,103 @@
 .dashboard {
 	position: absolute;
-	height: 367rem;
+	height: 393.9rem;
 	background-image: url(../../../assets//images/background-dashboard.png);
 	background-repeat: no-repeat;
 	z-index: -1;
+
+	&-info {
+		margin-top: 27rem;
+		margin-left: 28.4rem;
+		margin-bottom: 25.7rem;
+		display: flex;
+		justify-content: space-around;
+
+		&-personal {
+			&__title {
+				margin-bottom: 7rem;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 700;
+				font-size: 48px;
+				line-height: 56px;
+
+				color: #160637;
+			}
+
+			&__item {
+				width: 64.9rem;
+				height: 6.3rem;
+				margin-bottom: 4.1rem;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 28px;
+
+				color: #8989a2;
+			}
+
+			&__update {
+				width: 16.809rem;
+				height: 4.8rem;
+				margin-right: 18.3rem;
+				border: 0.1rem solid #ffffff;
+				border-radius: 5rem;
+				cursor: pointer;
+				background-color: #6dc8b7;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 16px;
+				text-align: center;
+
+				color: #ffffff;
+			}
+		}
+
+		&-notification {
+			margin-bottom: 7rem;
+
+			&__title {
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 700;
+				font-size: 48px;
+				line-height: 56px;
+
+				color: #160637;
+			}
+		}
+	}
+
+	#data__last {
+		margin-bottom: 120.6rem;
+	}
+	&-data {
+		width: 192.2rem;
+		height: 36.7rem;
+		margin-bottom: 42rem;
+
+		&-owner {
+			&__title {
+				margin-bottom: 3.4rem;
+				height: 5.9rem;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 700;
+				font-size: 48px;
+				line-height: 56px;
+				text-align: center;
+
+				color: #160637;
+			}
+
+			&-graphic {
+				width: 124.2rem;
+				height: 93.1rem;
+				margin-left: 33.1rem;
+			}
+		}
+	}
 }

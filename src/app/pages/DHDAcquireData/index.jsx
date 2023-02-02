@@ -90,7 +90,7 @@ export function DHDAcquireData() {
 					</div>
 				</form>
 			</div>
-			<Footer className='footer' />
+			<Footer />
 		</div>
 	)
 }
