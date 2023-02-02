@@ -182,6 +182,7 @@
 
 	&-usecase {
 		height: 54.57rem;
+		margin-bottom: 37.48rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -225,7 +226,7 @@
 					width: 13.867rem;
 					height: 7.731rem;
 					margin-bottom: 2.071rem;
-					font-family: 'Segoe UI';
+					font-family: 'Roboto';
 					font-style: normal;
 					font-weight: 700;
 					font-size: 24px;
@@ -237,7 +238,7 @@
 				&__description {
 					width: 30.8rem;
 					height: 11.597rem;
-					font-family: 'Segoe UI';
+					font-family: 'Roboto';
 					font-style: normal;
 					font-weight: 400;
 					font-size: 24px;
@@ -246,6 +247,153 @@
 					color: #8989a2;
 				}
 			}
+		}
+	}
+
+	&-research {
+		width: 13.94rem;
+		height: 72.1rem;
+		margin-left: 30.4rem;
+		margin-bottom: 9.8rem;
+
+		&__app {
+			width: 25.974rem;
+			height: 7.421rem;
+			margin-top: 2.264rem;
+			margin-bottom: 3.67rem;
+			border: 0.1rem solid #6dc8b7;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+
+		&__title {
+			width: 63.603rem;
+			height: 16.771rem;
+			margin-left: 37.899rem;
+			margin-bottom: 1.04rem;
+			visibility: hidden;
+			text-align: center;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 48px;
+			line-height: 56px;
+
+			color: #160637;
+
+			&:after {
+				content: 'Get valuable data \A for your research';
+				visibility: visible;
+				white-space: pre-wrap;
+			}
+		}
+
+		&__description {
+			width: 135.813rem;
+			margin-left: 1.793rem;
+			margin-bottom: 10.72rem;
+			visibility: hidden;
+			text-align: center;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 28px;
+			text-align: center;
+
+			color: #8989a2;
+
+			&:after {
+				content: 'If you have a team of researchers, or you are an institution and want to get information for your work, here is the right place. \A \A On DHD owr users have the chance to sell their information and get paid for that without compromise their identities. \A \A The process is very simple, you make a proposal about the information that you need and give specific characteristics of the information, then, every user that is compatible with your requirement; You will receive a notification to approve or not the sale of your information, for your information to be delivered, more than 50% of the users must have approved the request';
+				visibility: visible;
+				white-space: pre-wrap;
+			}
+		}
+
+		&__acquire {
+			width: 25.974rem;
+			height: 7.421rem;
+			margin-left: 59.656rem;
+			border: 0.1rem solid #6dc8b7;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+	}
+
+	&-newsletter {
+		width: 91.8rem;
+		height: 69.2rem;
+		margin-left: 57.2rem;
+		display: flex;
+		flex-direction: column;
+
+		&__title {
+			margin-top: 1.5rem;
+			margin-bottom: 3.23rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 40px;
+			line-height: 47px;
+			text-align: center;
+
+			color: #160637;
+		}
+
+		&__input {
+			width: 34.4rem;
+			height: 4.8rem;
+			margin-left: 29.7rem;
+			margin-bottom: 1.6rem;
+			cursor: pointer;
+			border: 0.1rem solid #8989a2;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+
+			color: #8989a2;
+
+			&::placeholder {
+				padding-left: 2.4rem;
+			}
+		}
+
+		&__submit {
+			width: 34.4rem;
+			height: 4.8rem;
+			margin-left: 29.7rem;
+			margin-bottom: 1.6rem;
+			cursor: pointer;
+			border: 0.1rem solid #6dc8b7;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
 		}
 	}
 }

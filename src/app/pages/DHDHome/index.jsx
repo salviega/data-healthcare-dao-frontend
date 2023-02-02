@@ -68,6 +68,21 @@ export function DHDHome() {
 						</div>
 					</div>
 				</div>
+				<div className='home-research'>
+					<button className='home-research__app'>For Research Teams</button>
+					<p className='home-research__title'></p>
+					<p className='home-research__description'></p>
+					<button className='home-research__acquire'>Acquire data</button>
+				</div>
+				<div className='home-newsletter'>
+					<p className='home-newsletter__title'>
+						Your health, your data, your decission
+					</p>
+					<input className='home-newsletter__input' placeholder='Your email' />
+					<button className='home-newsletter__submit'>
+						Subscribe to our newsletter
+					</button>
+				</div>
 			</div>
 		</div>
 	)
