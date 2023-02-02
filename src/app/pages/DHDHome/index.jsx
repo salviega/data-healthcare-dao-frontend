@@ -1,4 +1,7 @@
 import './DHDHome.scss'
+import figure1 from '../../../assets/images/usecase-fig1.svg'
+import figure2 from '../../../assets/images/usecase-fig2.svg'
+import figure3 from '../../../assets/images/usecase-fig3.svg'
 import React from 'react'
 
 export function DHDHome() {
@@ -13,14 +16,56 @@ export function DHDHome() {
 					<button className='home-buttons__weareable'>Get a weareble</button>
 					<button className='home-buttons__info'>Learn more</button>
 				</div>
-				<div className='home-content'>
-					<div className='home-content-info'>
-						<p className='home-content-info__description'>
-							​At DHD, we use state-of-the-art IoT wearables to track and record
-							health rate data. These wearables are designed to be comfortable,
-							discreet, and easy to use, so you can focus on your daily
-							activities without interruption
-						</p>
+				<p className='home__info'>
+					​At DHD, we use state-of-the-art IoT wearables to track and record
+					health rate data. These wearables are designed to be comfortable,
+					discreet, and easy to use, so you can focus on your daily activities
+					without interruption
+				</p>
+				<div className='home-panel'>
+					<p className='home-panel__title'>Our first sensor</p>
+					<p className='home-panel__description'>
+						A high-precision heart rate sensor
+					</p>
+					<p className='home-panel__info'></p>
+					<button className='home-panel__button'>Get a wearable</button>
+				</div>
+				<div className='home-usecase'>
+					<p className='home-usecase__info'>
+						IoT devices plus Blockchain technology brings a lot of benefits;
+						your hearbeats. your data, your decisión. These are some use cases
+					</p>
+					<div className='home-usecase-list'>
+						<div className='home-usecase-list-item'>
+							<figure>
+								<img src={figure1} alt='figure' />
+							</figure>
+							<p className='home-usecase-list-item__title'>Track your health</p>
+							<p className='home-usecase-list-item__description'>
+								Individuals can use our device to track their heart health over
+								time, identifying patterns and trends that can help inform{' '}
+							</p>
+						</div>
+						<div className='home-usecase-list-item'>
+							<figure>
+								<img src={figure2} alt='figure' />
+							</figure>
+							<p className='home-usecase-list-item__title'>Track your health</p>
+							<p className='home-usecase-list-item__description'>
+								Researchers may acquire HeartBeats data to study heart health in
+								large populations, uncovering new insights and
+							</p>
+						</div>
+						<div className='home-usecase-list-item'>
+							<figure>
+								<img src={figure3} alt='figure' />
+							</figure>
+							<p className='home-usecase-list-item__title'>Track your health</p>
+							<p className='home-usecase-list-item__description'>
+								Healthcare professionals may use your data to provide more
+								accurate diagnoses and more effective treatment plans for
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

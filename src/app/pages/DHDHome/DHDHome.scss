@@ -18,6 +18,7 @@
 		line-height: 7.5rem;
 
 		color: #160637;
+
 		&:after {
 			content: 'DHD, the DAO \A for Healthcare DATA';
 			visibility: visible;
@@ -40,8 +41,8 @@
 
 	&-buttons {
 		max-width: max-content;
-		height: 3.3rem;
-		margin: 0rem 0rem 19.4rem 17.8rem;
+		max-height: max-content;
+		margin: 0rem 0rem 49.51rem 17.8rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -82,19 +83,169 @@
 		}
 	}
 
-	&-content {
-		width: 181.668rem;
-		height: max-content;
+	&__info {
+		width: 59.368rem;
+		height: 14rem;
+		margin-bottom: 71.683rem;
+		margin-left: 122.6rem;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
+		text-align: center;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 28px;
+		text-align: center;
 
-		&__logo {
-			width: 111.896rem;
-			height: 88.243rem;
+		color: #8989a2;
+	}
+
+	&-panel {
+		width: 80.7rem;
+		height: 51.333rem;
+		margin-left: 16.3rem;
+		margin-bottom: 35.733rem;
+		border: 0.1rem solid #707070;
+		border-radius: 5rem;
+
+		&__title {
+			width: 46.533rem;
+			height: 8.533rem;
+			margin: 2.4rem 0rem 1.833rem 3.6rem;
+			display: flex;
+			align-items: center;
+			justify-content: left;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 6.4rem;
+			line-height: 7.5rem;
+
+			color: #160637;
 		}
 
-		&-info {
+		&__description {
+			width: 630rem;
+			height: 4.3rem;
+			margin-left: 3.6rem;
+			margin-bottom: 3.9rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 36px;
+			line-height: 42px;
+
+			color: #160637;
+		}
+
+		&__info {
+			width: 72rem;
+			height: 8.4rem;
+			margin-left: 3.6rem;
+			margin-bottom: 4.2rem;
+			visibility: hidden;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 28px;
+
+			color: #8989a2;
+
+			&:after {
+				content: '- With our device you can accurate data collection \A - Have WiFi connectivity for easy data transfer to the DHD platform \A - Cool wearable soon for Healthcare DATA';
+				visibility: visible;
+				white-space: pre-wrap;
+			}
+		}
+
+		&__button {
+			width: 25.974rem;
+			height: 7.421rem;
+			margin-left: 3.6rem;
+			border: 0.1rem solid #6dc8b7;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+	}
+
+	&-usecase {
+		height: 54.57rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&__info {
+			width: 97.8rem;
+			height: 11.6rem;
+			margin-bottom: 11.13rem;
+			text-align: center;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 40px;
+			line-height: 47px;
+			text-align: center;
+			color: #160637;
+		}
+
+		&-list {
+			margin-left: 38.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			&-item {
+				display: flex;
+				flex-direction: column;
+
+				figure {
+					width: 5.618rem;
+					height: 5.343rem;
+					margin-bottom: 3.475rem;
+					cursor: pointer;
+					img {
+						width: 100%;
+					}
+				}
+
+				&__title {
+					width: 13.867rem;
+					height: 7.731rem;
+					margin-bottom: 2.071rem;
+					font-family: 'Segoe UI';
+					font-style: normal;
+					font-weight: 700;
+					font-size: 24px;
+					line-height: 32px;
+
+					color: #160637;
+				}
+
+				&__description {
+					width: 30.8rem;
+					height: 11.597rem;
+					font-family: 'Segoe UI';
+					font-style: normal;
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 32px;
+
+					color: #8989a2;
+				}
+			}
 		}
 	}
 }
