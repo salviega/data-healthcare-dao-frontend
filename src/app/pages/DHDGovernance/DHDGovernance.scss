@@ -1,0 +1,206 @@
+.governance {
+	position: absolute;
+	height: 393.9rem;
+	background-image: url(../../../assets//images/background-dashboard.png);
+	background-repeat: no-repeat;
+	z-index: -1;
+
+	&-stat {
+		width: 39.1rem;
+		height: 8.1rem;
+		margin: 22.2rem 8.6rem 3.8rem 0rem;
+		position: relative;
+		float: right;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: right;
+
+		&__item {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 900;
+			font-size: 36px;
+			line-height: 42px;
+
+			color: #160637;
+		}
+	}
+
+	&-info {
+		width: 135.713rem;
+		height: max-content;
+		margin: 34.6rem 0rem 15.438rem 8.6rem;
+		margin-left: 28.2rem;
+		margin-bottom: 2.438;
+
+		&__title {
+			margin-bottom: 6.3rem;
+			height: 7.2rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 48px;
+			line-height: 56px;
+			text-align: center;
+
+			color: #160637;
+		}
+
+		&__description {
+			max-height: max-content;
+			visibility: hidden;
+			font-family: 'Segoe UI';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 32px;
+			text-align: center;
+
+			color: #8989a2;
+
+			&:after {
+				content: 'Hi!, if you are here is because you are interested on participe of the governance system of the DAO, remember, if you want to vote or make a proposal you must have a governance token. The governance token can be acquired by the shop of one of the devices EHR, that will let us link your device with your data recorded and your wallet. \A \A Remember this is a space of respect, connect your wallet and start to propose or vote, each proposal will have an expiry time not exceeding 1 month; please be as clear as possible in your proposal information, defining scope, objective, benefits and budget if required.';
+				visibility: visible;
+				white-space: pre-wrap;
+			}
+		}
+	}
+
+	&-buttons {
+		width: max-content;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		margin-left: 67.1rem;
+		margin-bottom: 21.9rem;
+		&__item {
+			width: 20.085rem;
+			height: 6.88rem;
+			margin-right: 18.3rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+	}
+
+	&-proposal {
+		width: 157.2rem;
+		height: 53.13rem;
+		margin-left: 20rem;
+		border: 0.1rem solid #707070;
+		border-radius: 17rem;
+
+		&__title {
+			width: 126.7rem;
+			height: 8.5rem;
+			margin: 2.4rem 0rem 21.4rem 8.6rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 64px;
+			line-height: 75px;
+
+			color: #160637;
+		}
+
+		&__status {
+			position: relative;
+			float: right;
+			margin-right: 20.8rem;
+			margin-top: 17.1rem;
+			width: 1.73rem;
+			height: 4.3rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 36px;
+			line-height: 42px;
+
+			color: #2abfa4;
+		}
+
+		&__description {
+			width: 108.2rem;
+			height: 8.4rem;
+			margin: 2.4rem 0rem 2.7rem 8.6rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 28px;
+
+			color: #8989a2;
+		}
+
+		&-vote {
+			position: absolute;
+			right: 3%;
+			top: 37%;
+			width: max-content;
+			height: 10rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			&__deadline {
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 300;
+				font-size: 24px;
+				line-height: 28px;
+
+				color: #160637;
+			}
+
+			&__approve {
+				height: 6.3999996185302734rem;
+				width: 22.4rem;
+				margin-right: 18.3rem;
+				border: 0.1rem solid #ffffff;
+				border-radius: 5rem;
+				cursor: pointer;
+				background-color: #6dc8b7;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 16px;
+				text-align: center;
+
+				color: #ffffff;
+			}
+		}
+
+		&-stat {
+			margin: 2.4rem 0rem 0rem 11.6rem;
+			width: 108.2rem;
+			height: 4.3rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			&__item {
+				margin-right: 12.7rem;
+				max-width: max-content;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 300;
+				font-size: 36px;
+				line-height: 42px;
+
+				color: #160637;
+			}
+		}
+	}
+}

@@ -4,6 +4,7 @@ import { DHDHome } from './pages/DHDHome'
 import { Menu } from './shared/Menu'
 import { DHDAcquireData } from './pages/DHDAcquireData'
 import { DHDDashboard } from './pages/DHDDashboard'
+import { DHDGovernance } from './pages/DHDGovernance'
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 						<Route path='/' element={<DHDHome />} />
 						<Route path='/acquire-data' element={<DHDAcquireData />} />
 						<Route path='/dashboard' element={<DHDDashboard />} />
+						<Route path='/governance' element={<DHDGovernance />} />
 						<Route path='*' element={<Navigate replace to='/' />} />
 					</Routes>
 				</main>

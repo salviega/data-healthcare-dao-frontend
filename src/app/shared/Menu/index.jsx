@@ -27,6 +27,16 @@ export function Menu(props) {
 									className={({ isActive }) => {
 										return isActive ? 'menu-center__item--active' : ''
 									}}
+									to='/governance'
+								>
+									governance
+								</NavLink>
+							</p>
+							<p className='menu-center__item'>
+								<NavLink
+									className={({ isActive }) => {
+										return isActive ? 'menu-center__item--active' : ''
+									}}
 									to='/acquire-data'
 								>
 									Acquire Data
