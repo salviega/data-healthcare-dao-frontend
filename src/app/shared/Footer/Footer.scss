@@ -1,12 +1,15 @@
-footer {
-	width: 16.84rem;
-	height: 4.938rem;
+.footer {
+	height: 26.8rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	.title {
-		width: 3.84rem;
+
+	&__title {
+		width: 38.4rem;
 		height: 4.268rem;
+		margin-left: 15.7rem;
+		padding-top: 1.128rem;
+
 		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: 400;
@@ -15,13 +18,20 @@ footer {
 
 		color: #404041;
 	}
-	.social {
+	&-social {
+		width: 46.909rem;
+		height: 3rem;
+		padding-top: 1.128rem;
+		margin-right: 7.9rem;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		gap: 3.273rem;
 
 		&__item {
+			width: max-content;
+			height: 4.444rem;
+			cursor: pointer;
 			font-family: 'Roboto';
 			font-style: normal;
 			font-weight: 400;

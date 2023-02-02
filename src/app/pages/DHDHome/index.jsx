@@ -69,7 +69,7 @@ export function DHDHome() {
 				</div>
 			</div>
 			<div className='home-research'>
-				<button className='home-research__app'>For Research Teams</button>
+				{/* <button className='home-research__app'>For Research Teams</button> */}
 				<p className='home-research__title'></p>
 				<p className='home-research__description'></p>
 				<button className='home-research__acquire'>Acquire data</button>
@@ -83,6 +83,7 @@ export function DHDHome() {
 					Subscribe to our newsletter
 				</button>
 			</div>
+			<Footer />
 		</div>
 	)
 }

@@ -1,6 +1,5 @@
 .home {
 	position: absolute;
-	height: 545.8rem;
 	background-image: url(../../../assets//images/background-home.png);
 	background-repeat: no-repeat;
 	z-index: -1;
@@ -181,7 +180,7 @@
 
 	&-usecase {
 		height: 54.57rem;
-		margin-bottom: 37.48rem;
+		margin-bottom: 47.48rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -251,15 +250,14 @@
 
 	&-research {
 		width: 13.94rem;
-		height: 72.1rem;
+		height: 56.8rem;
 		margin-left: 30.4rem;
-		margin-bottom: 9.8rem;
 
 		&__app {
 			width: 25.974rem;
-			height: 7.421rem;
+			height: 6.421rem;
 			margin-top: 2.264rem;
-			margin-bottom: 3.67rem;
+			margin-bottom: 1.67rem;
 			border: 0.1rem solid #6dc8b7;
 			border-radius: 5rem;
 			cursor: pointer;
@@ -277,8 +275,8 @@
 		&__title {
 			width: 63.603rem;
 			height: 16.771rem;
-			margin-left: 37.899rem;
-			margin-bottom: 1.04rem;
+			margin-left: 32.899rem;
+			margin-bottom: 0.84rem;
 			visibility: hidden;
 			text-align: center;
 			font-family: 'Roboto';
@@ -299,7 +297,7 @@
 		&__description {
 			width: 135.813rem;
 			margin-left: 1.793rem;
-			margin-bottom: 10.72rem;
+			margin-bottom: 6.72rem;
 			visibility: hidden;
 			text-align: center;
 			font-family: 'Roboto';
@@ -321,7 +319,7 @@
 		&__acquire {
 			width: 25.974rem;
 			height: 7.421rem;
-			margin-left: 59.656rem;
+			margin-left: 50.856rem;
 			border: 0.1rem solid #6dc8b7;
 			border-radius: 5rem;
 			cursor: pointer;
@@ -339,9 +337,8 @@
 
 	&-newsletter {
 		width: 91.8rem;
-		height: 69.2rem;
-		margin-left: 57.2rem;
-		margin-bottom: 12.234rem;
+		height: 67rem;
+		margin-left: 49.4rem;
 		display: flex;
 		flex-direction: column;
 
@@ -382,7 +379,6 @@
 			width: 34.4rem;
 			height: 4.8rem;
 			margin-left: 29.7rem;
-			margin-bottom: 1.6rem;
 			cursor: pointer;
 			border: 0.1rem solid #6dc8b7;
 			background-color: #6dc8b7;

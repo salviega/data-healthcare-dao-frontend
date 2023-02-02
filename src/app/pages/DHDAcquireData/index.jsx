@@ -1,5 +1,6 @@
 import './DHDAcquireData.scss'
 import React from 'react'
+import { Footer } from '../../shared/Footer'
 
 export function DHDAcquireData() {
 	return (
@@ -89,6 +90,7 @@ export function DHDAcquireData() {
 					</div>
 				</form>
 			</div>
+			<Footer className='footer' />
 		</div>
 	)
 }
