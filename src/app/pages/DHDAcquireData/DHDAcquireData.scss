@@ -1,0 +1,180 @@
+.acquire {
+	position: absolute;
+	min-height: 332.6rem;
+	background-image: url(../../../assets//images/background-acquire.png);
+	background-repeat: no-repeat;
+	z-index: -1;
+
+	&__title {
+		width: 71.3rem;
+		height: 19.8rem;
+		margin: 27rem 0rem 3.5rem 17.8rem;
+		visibility: hidden;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 6.4rem;
+		line-height: 7.5rem;
+
+		color: #ffffff;
+
+		&:after {
+			content: 'Get the data you need \A to develop your research';
+			visibility: visible;
+			white-space: pre-wrap;
+		}
+	}
+
+	&__subtitle {
+		width: 66.5rem;
+		height: 3.3rem;
+		margin: 0rem 0rem 9.579rem 17.8rem;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 28px;
+
+		color: #8989a2;
+	}
+
+	&-buttons {
+		max-width: max-content;
+		max-height: max-content;
+		margin: 0rem 0rem 75.9rem 17.8rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2.474rem;
+
+		&__weareable {
+			width: 25.974rem;
+			height: 7.421rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+		}
+
+		&__info {
+			width: 25.974rem;
+			height: 7.421rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 5rem;
+			cursor: pointer;
+			background-color: #ffffff;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #000000;
+		}
+	}
+
+	&-container {
+		width: 130.868rem;
+		height: 98.4rem;
+		margin-left: 37.16rem;
+
+		&__title {
+			margin-bottom: 13rem;
+			text-align: center;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 36px;
+			line-height: 42px;
+			text-align: center;
+
+			color: #6dc8b7;
+		}
+
+		&__description {
+			height: 1.9rem;
+			margin-bottom: 4.7rem;
+			text-align: center;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+
+			color: #000000;
+		}
+
+		&-form {
+			#form-primary__last {
+				margin-bottom: 4.6rem;
+			}
+
+			&__primary {
+				width: 130.868rem;
+				height: 5.6rem;
+				margin-bottom: 2.8rem;
+				background: #ffffff;
+				border: 1px solid #000000;
+
+				&::placeholder {
+					padding-left: 1.501rem;
+				}
+			}
+
+			&-section {
+				width: 130.868rem;
+				height: 5.6rem;
+				margin-bottom: 2.8rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			#form-secundary__last {
+				margin-bottom: 4.6rem;
+			}
+
+			&__secundary {
+				width: 59.231rem;
+				height: 5.6rem;
+				margin-bottom: 2.8rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: #ffffff;
+				border: 1px solid #000000;
+
+				&::placeholder {
+					padding-left: 1.501rem;
+				}
+			}
+
+			&__submit {
+				width: 16.809rem;
+				height: 4.8rem;
+				margin-right: 18.3rem;
+				border: 0.1rem solid #ffffff;
+				border-radius: 5rem;
+				cursor: pointer;
+				background-color: #6dc8b7;
+				font-family: 'Roboto';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 16px;
+				text-align: center;
+
+				color: #ffffff;
+			}
+		}
+	}
+}

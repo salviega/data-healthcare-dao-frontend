@@ -12,7 +12,7 @@ Repository url: https://github.com/Oriojas/data_healthcare_dao_sensors
 
 ### Fleek deploy
 
-Fleek url: https://dry-field-1018.on.fleek.co
+Fleek url: https://raspy-wood-0479.on.fleek.co
 
 ## Quick start 🏄
 

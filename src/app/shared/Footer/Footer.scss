@@ -1,0 +1,34 @@
+footer {
+	width: 16.84rem;
+	height: 4.938rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.title {
+		width: 3.84rem;
+		height: 4.268rem;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 19px;
+
+		color: #404041;
+	}
+	.social {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 3.273rem;
+
+		&__item {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+
+			color: #404041;
+		}
+	}
+}
