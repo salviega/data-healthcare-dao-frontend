@@ -1,6 +1,6 @@
 import { uiAction } from '../actionsTypes'
 const initialState = {
-	laoding: false
+	loading: false
 }
 
 export const uiReducer = (state = initialState, action) => {
