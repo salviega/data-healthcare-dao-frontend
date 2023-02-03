@@ -6,6 +6,8 @@ import { setLoading } from '../../../store/actions/uiActions'
 import { FormProposal } from './FormProposal'
 import { firebaseApi } from '../../../services/firebaseApi'
 import { PanelProposal } from './PanelProposal'
+import { Navigate } from 'react-router-dom'
+import { getProposalsDetails } from '../../../store/actions/proposalActions'
 
 export function DHDGovernance() {
 	const dispatch = useDispatch()
@@ -16,12 +18,14 @@ export function DHDGovernance() {
 	const [totalAsserts, setTotalAsserts] = useState(0)
 	const { createItem } = firebaseApi()
 
+	console.log('proposals: ', proposals)
+
 	const onSafeMint = async placement => {
 		try {
 			dispatch(setLoading(true))
 			const tx = await contracts.healthcareTokenContract.safeMint(
 				user.address,
-				ethers.utils.parseEther('1')
+				'1' // mint one token
 			)
 
 			user.provider
@@ -65,6 +69,10 @@ export function DHDGovernance() {
 		fetch()
 	}, [])
 
+	if (user.address === 'Connect wallet') {
+		return <Navigate to='/' />
+	}
+
 	return (
 		<div className='governance'>
 			<div className='governance-stat'>
@@ -99,7 +107,13 @@ export function DHDGovernance() {
 				/>
 			)}
 			{proposals?.map((proposal, index) => (
-				<PanelProposal key={index} proposal={proposal} />
+				<PanelProposal
+					key={index}
+					proposal={proposal}
+					user={user}
+					contracts={contracts}
+					dispatch={dispatch}
+				/>
 			))}
 		</div>
 	)

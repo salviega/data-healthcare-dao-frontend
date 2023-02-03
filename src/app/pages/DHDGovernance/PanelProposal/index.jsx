@@ -1,8 +1,41 @@
 import './PanelProposal.scss'
 import React from 'react'
+import { setLoading } from '../../../../store/actions/uiActions'
+import { ethers } from 'ethers'
 
 export function PanelProposal(props) {
-	const { proposal } = props
+	const { proposal, user, contracts, dispatch } = props
+
+	const onCastVoteWithReason = async () => {
+		// dispatch(setLoading(true))
+
+		// let myVoteTokens = await contracts.healthcareTokenContract.balanceOf(
+		// 	user.address
+		// )
+		// myVoteTokens = ethers.BigNumber.from(myVoteTokens).toNumber()
+		// if (myVoteTokens < 0) {
+		// 	window.alert('Cannot vote')
+		// 	dispatch(setLoading(false))
+		// 	return
+		// }
+
+		const voteWay = 1
+		const reason = 'I like the propol because...'
+
+		const tx = await contracts.healthcareDaoContract.castVoteWithReason(
+			proposal.id,
+			voteWay,
+			reason,
+			{ gasLimit: 250000 }
+		)
+		user.provider.waitForTransaction(tx.hash).then(async response => {
+			console.log(response)
+			setTimeout(() => {
+				window.alert('Voting sucessful')
+				dispatch(setLoading(false))
+			}, 3000)
+		})
+	}
 
 	return (
 		<div className='proposal'>
@@ -11,8 +44,16 @@ export function PanelProposal(props) {
 
 			<p className='proposal__description'>{proposal.description}</p>
 			<div className='proposal-vote'>
-				<p className='proposal-vote__deadline'>Time remaining: 0days</p>
-				<button className='proposal-vote__approve'>APPROVE</button>
+				<p className='proposal-vote__deadline'>
+					Votes: {proposal.votes.forVotes}
+				</p>
+				<p className='proposal-vote__deadline'>Time remaining: 0days // TODO</p>
+				<button
+					className='proposal-vote__approve'
+					onClick={onCastVoteWithReason}
+				>
+					VOTE
+				</button>
 			</div>
 			<div className='proposal-stat'>
 				<p className='proposal-stat__item'>

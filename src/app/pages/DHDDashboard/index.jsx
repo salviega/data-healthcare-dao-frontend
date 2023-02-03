@@ -2,8 +2,16 @@ import './DHDDashboard.scss'
 import React from 'react'
 import { Footer } from '../../shared/Footer'
 import { Plot } from './Plot'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
 export function DHDDashboard() {
+	const user = useSelector(store => store.auth)
+
+	if (user.address === 'Connect wallet') {
+		return <Navigate to='/' />
+	}
+
 	return (
 		<div className='dashboard'>
 			<div className='dashboard-info'>

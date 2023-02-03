@@ -37,7 +37,6 @@ export function FormProposal(props) {
 		})
 
 		const proposal = `${info.title}: ${info.description}. Cost: ${info.required} FIl`
-		console.log('proposal: ', proposal)
 
 		const encodedFunctionCall =
 			contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
@@ -53,31 +52,31 @@ export function FormProposal(props) {
 		)
 	}
 	return (
-		<form className='proposal' onSubmit={onPropose}>
+		<form className='form' onSubmit={onPropose}>
 			<input
-				className='proposal__input'
-				placeholder='Proposal title'
+				className='form__input'
+				placeholder='form title'
 				type='text'
 				maxLength='100'
 				required
 				ref={title}
 			></input>
 			<input
-				className='proposal__input'
-				placeholder='Proposal description'
+				className='form__input'
+				placeholder='form description'
 				type='text'
 				maxLength='280'
 				required
 				ref={description}
 			></input>
 			<input
-				className='proposal__input'
+				className='form__input'
 				placeholder='FIL'
 				type='number'
 				required
 				ref={required}
 			></input>
-			<button className='proposal__button'>PROPOSE</button>
+			<button className='form__button'>PROPOSE</button>
 		</form>
 	)
 }
