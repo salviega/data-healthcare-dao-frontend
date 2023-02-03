@@ -28,7 +28,6 @@ export function Plot() {
 
 	let xAxes = [1, 2, 3, 4, 5]
 	const yAxes = [1, 2, 3, 4, 5]
-	console.log('	const yAxes = [1, 2, 3, 4, 5')
 	// graphInformation.map(datum => xAxes.push(datum.x))
 	// graphInformation.map(datum => yAxes.push(datum.y))
 

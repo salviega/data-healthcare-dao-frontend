@@ -11,13 +11,11 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case authAction.LOGIN:
-			console.log('action.payload: ', action.payload)
 			const { address, provider, signer, chainId } = action.payload
 
 			return { address, provider, signer, chainId }
 
 		case authAction.LOGOUT:
-			window.localStorage.clear()
 			return initialState
 		default:
 			return state

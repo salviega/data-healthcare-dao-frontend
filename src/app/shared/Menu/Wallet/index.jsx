@@ -3,12 +3,19 @@ import './Wallet.scss'
 import React from 'react'
 import { ethers } from 'ethers'
 import { useDispatch, useSelector } from 'react-redux'
-import { login, logout } from '../../../../store/actions/authAction'
+import { login, logout } from '../../../../store/actions/authActions'
+import {
+	destroyContracts,
+	makeContracts
+} from '../../../../store/actions/contractActions'
 import { useNavigate } from 'react-router-dom'
 
 export function Wallet() {
 	const [loading, setLoading] = React.useState(false)
 	const user = useSelector(state => state.auth)
+	const contracts = useSelector(state => state.contracts)
+	console.log('user: ', user)
+	console.log('contracts: ', contracts)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -38,8 +45,10 @@ export function Wallet() {
 				return
 			}
 			dispatch(login({ address, provider, signer, chainId }))
+			dispatch(makeContracts(signer))
 			setLoading(false)
 		} else {
+			dispatch(destroyContracts())
 			dispatch(logout())
 			setLoading(false)
 			navigate('/')
