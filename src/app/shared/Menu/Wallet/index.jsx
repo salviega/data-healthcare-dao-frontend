@@ -9,6 +9,7 @@ import {
 	makeContracts
 } from '../../../../store/actions/contractActions'
 import { useNavigate } from 'react-router-dom'
+import { getProposalsDetails } from '../../../../store/actions/proposalActions'
 
 export function Wallet() {
 	const [loading, setLoading] = React.useState(false)
@@ -44,6 +45,7 @@ export function Wallet() {
 			}
 			dispatch(login({ address, provider, signer, chainId }))
 			dispatch(makeContracts(signer))
+			dispatch(getProposalsDetails())
 			setLoading(false)
 		} else {
 			dispatch(destroyContracts())

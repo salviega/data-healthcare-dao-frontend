@@ -1,22 +1,22 @@
 import './DHDGovernance.scss'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
-import { Spinner } from '../../shared/Spinner'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '../../../store/actions/uiActions'
 import { FormProposal } from './FormProposal'
 import { firebaseApi } from '../../../services/firebaseApi'
+import { PanelProposal } from './PanelProposal'
 
-export function DHDGovernance(props) {
-	const { createItem } = firebaseApi()
-	const { user, contracts, loading } = props
-	const [doProposal, setDoProposal] = useState(false)
+export function DHDGovernance() {
 	const dispatch = useDispatch()
+	const user = useSelector(store => store.auth)
+	const contracts = useSelector(store => store.contracts)
+	const proposals = useSelector(store => store.proposals)
+	const [doProposal, setDoProposal] = useState(false)
+	const [totalAsserts, setTotalAsserts] = useState(0)
+	const { createItem } = firebaseApi()
 
 	const onSafeMint = async placement => {
-		// console.log('contracts :', contracts)
-		// console.log('user: ', user)
-		// console.log('loading: ', loading)
 		try {
 			dispatch(setLoading(true))
 			const tx = await contracts.healthcareTokenContract.safeMint(
@@ -56,71 +56,51 @@ export function DHDGovernance(props) {
 		}
 	}
 
+	useEffect(() => {
+		const fetch = async () => {
+			const funds = await contracts.fundsContract.totalAsserts()
+			setTotalAsserts(ethers.BigNumber.from(funds).toNumber())
+		}
+
+		fetch()
+	}, [])
+
 	return (
 		<div className='governance'>
-			{loading ? (
-				<Spinner />
-			) : (
-				<>
-					<div className='governance-stat'>
-						<p className='governance-stat__item'>PROPOSAL: 1</p>
-						<p className='governance-stat__item'>FUNDS: 1</p>
-					</div>
-					<div className='governance-info'>
-						<p className='governance-info__title'>
-							Welcome to the Governance DAO of DHD
-						</p>
-						<p className='governance-info__description'></p>
-					</div>
-					<div className='governance-buttons'>
-						<button
-							className='governance-buttons__item'
-							onClick={() => {
-								!doProposal ? setDoProposal(true) : setDoProposal(false)
-							}}
-						>
-							Make a proposal
-						</button>
-						<button className='governance-buttons__item' onClick={onSafeMint}>
-							Get token
-						</button>
-					</div>
-					{doProposal && (
-						<FormProposal
-							user={user}
-							contracts={contracts}
-							createItem={createItem}
-							dispatch={dispatch}
-						/>
-					)}
-					<div className='governance-proposal'>
-						<p className='governance-proposal__status'>·PENDING</p>
-						<p className='governance-proposal__title'>
-							Build a distribution pool for all governance token holders
-						</p>
-
-						<p className='governance-proposal__description'>
-							In order to make an equitable distribution of resources, a
-							percentage of each revenue from data acquisition will be allocated
-							to s holders of the governance token.
-						</p>
-						<div className='governance-proposal-vote'>
-							<p className='governance-proposal-vote__deadline'>
-								Time remaining: 0days
-							</p>
-							<button className='governance-proposal-vote__approve'>
-								APPROVE
-							</button>
-						</div>
-						<div className='governance-proposal-stat'>
-							<p className='governance-proposal-stat__item'>
-								Proposal made by: 0x5d8B44...
-							</p>
-							<p className='governance-proposal-stat__item'>Cost: 5 FIL</p>
-						</div>
-					</div>
-				</>
+			<div className='governance-stat'>
+				<p className='governance-stat__item'>PROPOSALS: {proposals.length}</p>
+				<p className='governance-stat__item'>FUNDS: {totalAsserts} FIL</p>
+			</div>
+			<div className='governance-info'>
+				<p className='governance-info__title'>
+					Welcome to the Governance DAO of DHD
+				</p>
+				<p className='governance-info__description'></p>
+			</div>
+			<div className='governance-buttons'>
+				<button
+					className='governance-buttons__item'
+					onClick={() => {
+						!doProposal ? setDoProposal(true) : setDoProposal(false)
+					}}
+				>
+					Make a proposal
+				</button>
+				<button className='governance-buttons__item' onClick={onSafeMint}>
+					Get token
+				</button>
+			</div>
+			{doProposal && (
+				<FormProposal
+					user={user}
+					contracts={contracts}
+					createItem={createItem}
+					dispatch={dispatch}
+				/>
 			)}
+			{proposals?.map((proposal, index) => (
+				<PanelProposal key={index} proposal={proposal} />
+			))}
 		</div>
 	)
 }
