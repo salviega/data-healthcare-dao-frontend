@@ -74,7 +74,7 @@
 		align-items: center;
 		justify-content: space-around;
 		margin-left: 67.1rem;
-		margin-bottom: 21.9rem;
+		margin-bottom: 7.5rem;
 		&__item {
 			width: 20.085rem;
 			height: 6.88rem;
@@ -144,9 +144,9 @@
 		}
 
 		&-vote {
-			position: absolute;
-			right: 3%;
-			top: 37%;
+			position: relative;
+			right: -77%;
+			top: -7%;
 			width: max-content;
 			height: 10rem;
 			display: flex;

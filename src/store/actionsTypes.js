@@ -11,3 +11,7 @@ export const contractAction = {
 	DESTROY_CONTRACT: 'DESTRO_CONTRACTS',
 	MAKE_CONTRACTS: 'MAKE CONTRACTS'
 }
+
+export const proposalAction = {
+	SET_PROPOSALS: 'SET PROPOSALS'
+}

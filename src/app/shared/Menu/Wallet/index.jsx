@@ -14,8 +14,6 @@ export function Wallet() {
 	const [loading, setLoading] = React.useState(false)
 	const user = useSelector(state => state.auth)
 	const contracts = useSelector(state => state.contracts)
-	console.log('user: ', user)
-	console.log('contracts: ', contracts)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 

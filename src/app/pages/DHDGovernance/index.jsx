@@ -1,47 +1,59 @@
 import './DHDGovernance.scss'
-import React from 'react'
+import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { Spinner } from '../../shared/Spinner'
 import { useDispatch } from 'react-redux'
 import { setLoading } from '../../../store/actions/uiActions'
+import { FormProposal } from './FormProposal'
+import { firebaseApi } from '../../../services/firebaseApi'
 
 export function DHDGovernance(props) {
+	const { createItem } = firebaseApi()
 	const { user, contracts, loading } = props
+	const [doProposal, setDoProposal] = useState(false)
 	const dispatch = useDispatch()
 
-	const onSafeMint = async () => {
+	const onSafeMint = async placement => {
 		// console.log('contracts :', contracts)
 		// console.log('user: ', user)
 		// console.log('loading: ', loading)
-		dispatch(setLoading(true))
-		const tx = await contracts.healthcareTokenContract.safeMint(
-			user.address,
-			ethers.utils.parseEther('1')
-		)
+		try {
+			dispatch(setLoading(true))
+			const tx = await contracts.healthcareTokenContract.safeMint(
+				user.address,
+				ethers.utils.parseEther('1')
+			)
 
-		user.provider
-			.waitForTransaction(tx.hash)
-			.then(async _response => {
-				const tx2 = await contracts.healthcareTokenContract.delegate(
-					user.address
-				)
-				user.provider
-					.waitForTransaction(tx2.hash)
-					.then(_response2 => {
-						setTimeout(() => {
-							window.alert('1 DHD vote token was minted')
+			user.provider
+				.waitForTransaction(tx.hash)
+				.then(async _response => {
+					const tx2 = await contracts.healthcareTokenContract.delegate(
+						user.address
+					)
+					user.provider
+						.waitForTransaction(tx2.hash)
+						.then(_response2 => {
+							setTimeout(() => {
+								window.alert('1 DHD vote token was minted')
+								dispatch(setLoading(false))
+							}, 3000)
+						})
+						.catch(error => {
+							console.log('error: ', error)
+							window.alert('There war an error, look the console')
 							dispatch(setLoading(false))
-						}, 3000)
-					})
-					.catch(error => {
-						console.log('error: ', error)
-						dispatch(setLoading(false))
-					})
-			})
-			.catch(error => {
-				console.log('error: ', error)
-				dispatch(setLoading(false))
-			})
+						})
+				})
+				.catch(error => {
+					console.log('error: ', error)
+					window.alert('There war an error, look the console')
+					dispatch(setLoading(false))
+				})
+		} catch (error) {
+			console.log('error: ', error)
+			window.alert('There war an error, look the console')
+			dispatch(setLoading(false))
+		}
 	}
 
 	return (
@@ -61,13 +73,26 @@ export function DHDGovernance(props) {
 						<p className='governance-info__description'></p>
 					</div>
 					<div className='governance-buttons'>
-						<button className='governance-buttons__item'>
+						<button
+							className='governance-buttons__item'
+							onClick={() => {
+								!doProposal ? setDoProposal(true) : setDoProposal(false)
+							}}
+						>
 							Make a proposal
 						</button>
 						<button className='governance-buttons__item' onClick={onSafeMint}>
 							Get token
 						</button>
 					</div>
+					{doProposal && (
+						<FormProposal
+							user={user}
+							contracts={contracts}
+							createItem={createItem}
+							dispatch={dispatch}
+						/>
+					)}
 					<div className='governance-proposal'>
 						<p className='governance-proposal__status'>·PENDING</p>
 						<p className='governance-proposal__title'>

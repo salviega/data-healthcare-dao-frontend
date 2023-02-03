@@ -8,10 +8,12 @@ import thunk from 'redux-thunk'
 import { authReducer } from './reducers/authReducer'
 import { contractReducer } from './reducers/contractReducer'
 import { uiReducer } from './reducers/uiReducer'
+import { proposalReducer } from './reducers/proposalReducer'
 
 const reducers = combineReducers({
 	auth: authReducer,
 	contracts: contractReducer,
+	proposals: proposalReducer,
 	ui: uiReducer
 })
 
