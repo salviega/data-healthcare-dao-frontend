@@ -73,6 +73,7 @@ export function FormProposal(props) {
 				className='form__input'
 				placeholder='FIL'
 				type='number'
+				min='0.1'
 				required
 				ref={required}
 			></input>
