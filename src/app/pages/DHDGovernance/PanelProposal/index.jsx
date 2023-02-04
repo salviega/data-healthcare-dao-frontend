@@ -37,11 +37,103 @@ export function PanelProposal(props) {
 		})
 	}
 
+	const onQueueAndExecute = async () => {
+		const encodedFunctionCall =
+			contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
+				proposal.wallet,
+				ethers.utils.parseEther(proposal.required)
+			])
+
+		const currentProposal = `${proposal.title}: ${proposal.description}. Cost: ${proposal.required} FIl`
+		const descriptionHash = ethers.utils.keccak256(
+			ethers.utils.toUtf8Bytes(currentProposal)
+		)
+
+		const tx = await contracts.healthcareDaoContract.queue(
+			[contracts.fundsContract.address],
+			[0],
+			[encodedFunctionCall],
+			descriptionHash
+		)
+
+		user.provider
+			.waitForTransaction(tx.hash)
+			.then(async _response => {
+				const tx2 = await contracts.healthcareDaoContract.execute(
+					[contracts.fundsContract.address],
+					[0],
+					[encodedFunctionCall],
+					descriptionHash,
+					{ gasLimit: 250000 }
+				)
+				user.provider
+					.waitForTransaction(tx2.hash)
+					.then(_response2 => {
+						setTimeout(() => {
+							window.alert('Th proposal was executed')
+							dispatch(setLoading(false))
+						}, 3000)
+					})
+					.catch(error => {
+						console.log('error: ', error)
+						window.alert('There war an error, look the console')
+						dispatch(setLoading(false))
+					})
+			})
+			.catch(error => {
+				console.log('error: ', error)
+				window.alert('There war an error, look the console')
+				dispatch(setLoading(false))
+			})
+	}
+
+	const onExecute = async () => {
+		const encodedFunctionCall =
+			contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
+				proposal.wallet,
+				ethers.utils.parseEther(proposal.required)
+			])
+
+		const currentProposal = `${proposal.title}: ${proposal.description}. Cost: ${proposal.required} FIl`
+		const descriptionHash = ethers.utils.keccak256(
+			ethers.utils.toUtf8Bytes(currentProposal)
+		)
+
+		const tx = await contracts.healthcareDaoContract.execute(
+			[contracts.fundsContract.address],
+			[0],
+			[encodedFunctionCall],
+			descriptionHash,
+			{ gasLimit: 250000 }
+		)
+
+		user.provider
+			.waitForTransaction(tx.hash)
+			.then(_response => {
+				setTimeout(() => {
+					window.alert('Proposal executed')
+					dispatch(setLoading(false))
+				}, 3000)
+			})
+			.catch(error => {
+				console.log('error: ', error)
+				window.alert('There war an error, look the console')
+				dispatch(setLoading(false))
+			})
+	}
+
 	return (
 		<div className='proposal'>
-			<p className='proposal__status'>{currentStatus(proposal.state)}</p>
+			<div className='proosal-state'>
+				<p className='proposal-state__text'>{proposal.state}</p>
+				<button className='proposal-state__queue' onClick={onQueueAndExecute}>
+					QUEUE
+				</button>
+				<button className='proposal-state__queue' onClick={onExecute}>
+					EXECUTE
+				</button>
+			</div>
 			<p className='proposal__title'>{proposal.title}</p>
-
 			<p className='proposal__description'>{proposal.description}</p>
 			<div className='proposal-vote'>
 				<p className='proposal-vote__deadline'>
@@ -96,14 +188,14 @@ function currentStatus(state) {
 	//  3 Defeated
 	else if (state === 4)
 		return (
-			<div className='proposal__status' style={{ color: 'red' }}>
+			<div className='proposal__status' style={{ color: 'green' }}>
 				Succeeded
 			</div>
 		)
 	//  4 Succeeded
 	else if (state === 5)
 		return (
-			<div className='proposal__status' style={{ color: 'red' }}>
+			<div className='proposal__status' style={{ color: 'yellow' }}>
 				Queued
 			</div>
 		)

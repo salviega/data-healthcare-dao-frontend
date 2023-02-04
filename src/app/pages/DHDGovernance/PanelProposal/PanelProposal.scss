@@ -1,4 +1,5 @@
 .proposal {
+	position: absolute;
 	width: 157.2rem;
 	height: 53.13rem;
 	margin-left: 20rem;
@@ -6,7 +7,7 @@
 	border-radius: 17rem;
 
 	&__title {
-		width: 126.7rem;
+		width: max-content;
 		height: 8.5rem;
 		margin: 2.4rem 0rem 15.4rem 0rem;
 		font-family: 'Roboto';
@@ -18,19 +19,50 @@
 		color: #160637;
 	}
 
-	&__status {
+	&-state {
 		position: absolute;
 		top: 29%;
 		right: 18%;
-		width: 1.73rem;
 		height: 4.3rem;
-		font-family: 'Roboto';
-		font-style: normal;
-		font-weight: 300;
-		font-size: 36px;
-		line-height: 42px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		&__text {
+			width: 1.73rem;
+			height: 4.3rem;
+			margin-left: 39rem;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 36px;
+			line-height: 42px;
 
-		color: #2abfa4;
+			color: #2abfa4;
+		}
+
+		&__queue {
+			width: 20.085rem;
+			height: 3.88rem;
+			margin-left: 39rem;
+			border: 0.1rem solid #ffffff;
+			border-radius: 3rem;
+			cursor: pointer;
+			background-color: #6dc8b7;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #ffffff;
+
+			&:hover {
+				background-color: rgb(148, 204, 195);
+			}
+		}
 	}
 
 	&__description {

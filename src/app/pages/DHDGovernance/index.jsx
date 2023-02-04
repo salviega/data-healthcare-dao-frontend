@@ -18,8 +18,6 @@ export function DHDGovernance() {
 	const [totalAsserts, setTotalAsserts] = useState(0)
 	const { createItem } = firebaseApi()
 
-	console.log('proposals: ', proposals)
-
 	const onSafeMint = async placement => {
 		try {
 			dispatch(setLoading(true))
