@@ -7,7 +7,6 @@ import { FormProposal } from './FormProposal'
 import { firebaseApi } from '../../../services/firebaseApi'
 import { PanelProposal } from './PanelProposal'
 import { Navigate } from 'react-router-dom'
-import { getProposalsDetails } from '../../../store/actions/proposalActions'
 
 export function DHDGovernance() {
 	const dispatch = useDispatch()
@@ -18,9 +17,10 @@ export function DHDGovernance() {
 	const [totalAsserts, setTotalAsserts] = useState(0)
 	const { createItem } = firebaseApi()
 
-	const onSafeMint = async placement => {
+	const onSafeMint = async () => {
+		dispatch(setLoading(true))
+
 		try {
-			dispatch(setLoading(true))
 			const tx = await contracts.healthcareTokenContract.safeMint(
 				user.address,
 				'1' // mint one token
@@ -41,21 +41,25 @@ export function DHDGovernance() {
 							}, 3000)
 						})
 						.catch(error => {
-							console.log('error: ', error)
-							window.alert('There war an error, look the console')
-							dispatch(setLoading(false))
+							onError(error)
 						})
 				})
 				.catch(error => {
-					console.log('error: ', error)
-					window.alert('There war an error, look the console')
-					dispatch(setLoading(false))
+					onError(error)
 				})
 		} catch (error) {
-			console.log('error: ', error)
-			window.alert('There war an error, look the console')
-			dispatch(setLoading(false))
+			onError(error)
 		}
+	}
+
+	const showProposalForm = () => {
+		!doProposal ? setDoProposal(true) : setDoProposal(false)
+	}
+
+	const onError = error => {
+		console.log('❌ error: ', error)
+		window.alert('There war an error, look the console')
+		dispatch(setLoading(false))
 	}
 
 	useEffect(() => {
@@ -73,23 +77,19 @@ export function DHDGovernance() {
 
 	return (
 		<div className='governance'>
+			<div className='governance-spacer' />
 			<div className='governance-stat'>
 				<p className='governance-stat__item'>PROPOSALS: {proposals.length}</p>
 				<p className='governance-stat__item'>FUNDS: {totalAsserts} FIL</p>
 			</div>
-			<div className='governance-info'>
-				<p className='governance-info__title'>
+			<div className='governance-resume'>
+				<p className='governance-resume__title'>
 					Welcome to the Governance DAO of DHD
 				</p>
-				<p className='governance-info__description'></p>
+				<p className='governance-resume__description'></p>
 			</div>
 			<div className='governance-buttons'>
-				<button
-					className='governance-buttons__item'
-					onClick={() => {
-						!doProposal ? setDoProposal(true) : setDoProposal(false)
-					}}
-				>
+				<button className='governance-buttons__item' onClick={showProposalForm}>
 					Make a proposal
 				</button>
 				<button className='governance-buttons__item' onClick={onSafeMint}>

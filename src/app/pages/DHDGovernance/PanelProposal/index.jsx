@@ -123,36 +123,38 @@ export function PanelProposal(props) {
 	}
 
 	return (
-		<div className='proposal'>
-			<div className='proosal-state'>
-				<p className='proposal-state__text'>{proposal.state}</p>
-				<button className='proposal-state__queue' onClick={onQueueAndExecute}>
+		<div className='panel'>
+			<div className='panel-state'>
+				<p className='panel-state__text'>{currentStatus(proposal.state)}</p>
+				<button className='panel-state__queue' onClick={onQueueAndExecute}>
 					QUEUE
 				</button>
-				<button className='proposal-state__queue' onClick={onExecute}>
+				<button className='panel-state__queue' onClick={onExecute}>
 					EXECUTE
 				</button>
 			</div>
-			<p className='proposal__title'>{proposal.title}</p>
-			<p className='proposal__description'>{proposal.description}</p>
-			<div className='proposal-vote'>
-				<p className='proposal-vote__deadline'>
-					Votes: {proposal.votes.forVotes}
+			<p className='panel__title'>{proposal.title}</p>
+			<p className='panel__description'>{proposal.description}</p>
+			<div className='panel-stat'>
+				<p className='panel-stat__item'>
+					Proposal made by: {String(proposal.wallet).slice(28) + '...'}
 				</p>
-				<p className='proposal-vote__deadline'>Time remaining: 0days // TODO</p>
-				<button
-					className='proposal-vote__approve'
-					onClick={onCastVoteWithReason}
-				>
-					VOTE
-				</button>
+				<p className='panel-stat__item'>Cost: {proposal.required} FIL</p>
 			</div>
-			<div className='proposal-stat'>
-				<p className='proposal-stat__item'>
-					Proposal made by: {proposal.wallet}
-				</p>
-				<p className='proposal-stat__item'>Cost: {proposal.required} FIL</p>
-			</div>
+			{
+				<div className='panel-vote'>
+					<p className='panel-vote__deadline'>
+						Votes: {proposal.votes.forVotes}
+					</p>
+					<p className='panel-vote__deadline'>Time remaining: 0days // TODO</p>
+					<button
+						className='panel-vote__approve'
+						onClick={onCastVoteWithReason}
+					>
+						VOTE
+					</button>
+				</div>
+			}
 		</div>
 	)
 }

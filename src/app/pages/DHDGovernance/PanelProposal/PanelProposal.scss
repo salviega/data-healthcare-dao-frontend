@@ -1,29 +1,60 @@
-.proposal {
-	position: absolute;
-	width: 157.2rem;
+.panel {
+	width: 98%;
 	height: 53.13rem;
-	margin-left: 20rem;
+	margin-bottom: 7.2rem;
+	padding-top: 3.6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	border: 0.1rem solid #707070;
 	border-radius: 17rem;
 
 	&__title {
-		width: max-content;
-		height: 8.5rem;
-		margin: 2.4rem 0rem 15.4rem 0rem;
+		width: 84%;
+		height: 12.5rem;
+		margin-bottom: 5.2rem;
 		font-family: 'Roboto';
 		font-style: normal;
 		font-weight: 700;
-		font-size: 64px;
-		line-height: 75px;
+		font-size: 6.4rem;
+		line-height: 7.5rem;
 
 		color: #160637;
 	}
 
+	&__description {
+		width: 84%;
+		height: 8.5rem;
+		margin-bottom: 12rem;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 2.4rem;
+		line-height: 2.8rem;
+
+		color: #8989a2;
+	}
+
+	&-stat {
+		width: 98%;
+		height: 8.6rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		&__item {
+			max-width: max-content;
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			font-size: 3.6rem;
+			line-height: 3.6rem;
+
+			color: #160637;
+		}
+	}
+
 	&-state {
-		position: absolute;
-		top: 29%;
-		right: 18%;
-		height: 4.3rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -65,18 +96,6 @@
 		}
 	}
 
-	&__description {
-		width: 108.2rem;
-		height: 8.4rem;
-		font-family: 'Roboto';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 24px;
-		line-height: 28px;
-
-		color: #8989a2;
-	}
-
 	&-vote {
 		position: relative;
 		right: -40%;
@@ -113,27 +132,6 @@
 			text-align: center;
 
 			color: #ffffff;
-		}
-	}
-
-	&-stat {
-		margin: 2.4rem 0rem 0rem 11.6rem;
-		width: 108.2rem;
-		height: 4.3rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		&__item {
-			margin-right: 12.7rem;
-			max-width: max-content;
-			font-family: 'Roboto';
-			font-style: normal;
-			font-weight: 300;
-			font-size: 36px;
-			line-height: 42px;
-
-			color: #160637;
 		}
 	}
 }
