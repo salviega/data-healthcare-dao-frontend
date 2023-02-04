@@ -4,6 +4,10 @@ import { Footer } from '../../shared/Footer'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { ethers } from 'ethers'
+import axios from 'axios'
+
+const CREATE_PROPOSAL =
+	'http://ec2-100-24-74-70.compute-1.amazonaws.com:8088/form/'
 
 export function DHDAcquireData() {
 	const user = useSelector(store => store.auth)
@@ -27,52 +31,50 @@ export function DHDAcquireData() {
 		event.preventDefault()
 
 		let info = {
-			institute: institute.current.value,
-			wallet: wallet.current.value,
-			project: project.current.value,
-			minAge: minAge.current.value,
-			maxAge: maxAge.current.value,
-			minHeight: minHeight.current.value,
-			maxHeight: maxHeight.current.value,
-			minWeight: minWeight.current.value,
-			maxWight: maxWight.current.value,
-			country: country.current.value,
-			genere: genere.current.value,
-			time: time.current.value,
-			queryId: 0,
-			deadline: 0
+			INSTITUCION: institute.current.value,
+			WALLET: wallet.current.value,
+			NOMBRE_PROYECTO: project.current.value,
+			MIN_EDAD: parseInt(minAge.current.value),
+			MAX_EDAD: parseInt(maxAge.current.value),
+			MIN_PESO: parseInt(minHeight.current.value),
+			MAX_PESO: parseInt(maxHeight.current.value),
+			MIN_ESTATURA: parseInt(minWeight.current.value),
+			MAX_ESTATURA: parseInt(maxWight.current.value),
+			PAIS: country.current.value,
+			GENERO: genere.current.value,
+			TIME_STAMP: 0,
+			ID_QUERY: 0
 		}
 
-		if (parseInt(info.minAge) >= parseInt(info.maxAge)) {
+		if (parseInt(info.MIN_EDAD) >= parseInt(info.MAX_EDAD)) {
 			window.alert('Min age greater than max age')
 			return
-		} else if (parseInt(info.minHeight) >= parseInt(info.maxHeight)) {
+		} else if (parseInt(info.MIN_ESTATURA) >= parseInt(info.MAX_ESTATURA)) {
 			window.alert('Min heigth greater than max heigth')
 			return
-		} else if (parseInt(info.minWeight) >= parseInt(info.maxWight)) {
+		} else if (parseInt(info.MIN_PESO) >= parseInt(info.MAX_PESO)) {
 			window.alert('Min weight greater than max wight')
 			return
 		}
-
-		deadline.setDate(deadline.getDate() + parseInt(info.time))
-		info.deadline = deadline.getTime() // timestamp
+		deadline.setDate(deadline.getDate() + parseInt(time.current.value))
+		console.log(deadline.getTime())
+		info.TIME_STAMP = deadline.getTime() // timestamp
 
 		contracts.fundsContract.on('ArrangeData', async (queryId, deadline) => {
-			const queryIdParsed = ethers.BigNumber.from(queryId).toString()
-			const deadlineParsed = ethers.BigNumber.from(deadline).toString()
+			const queryIdParsed = ethers.BigNumber.from(queryId).toNumber()
+			const deadlineParsed = ethers.BigNumber.from(deadline).toNumber()
+			console.log('info: ', info)
+			info.ID_QUERY = queryIdParsed
+			info.TIME_STAMP = deadlineParsed
 
-			info.queryId = queryIdParsed
-			info.deadline = deadlineParsed
-
-			console.log('queryIdParsed :', queryIdParsed)
-			console.log('deadlineParsed :', deadlineParsed)
+			await axios.post(CREATE_PROPOSAL, info)
 			window.alert('The acquerid data was done')
 
 			//dispatch(setLoading(false))
 		})
 
-		await contracts.fundsContract.rentData(info.deadline, {
-			value: ethers.utils.parseEther('0.1'),
+		await contracts.fundsContract.rentData(info.TIME_STAMP, {
+			value: ethers.utils.parseEther('0.01'),
 			gasLimit: 250000
 		})
 	}

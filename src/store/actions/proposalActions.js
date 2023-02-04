@@ -25,31 +25,33 @@ export const getProposalsDetails =
 		const proposals = await getAllItems()
 		const proposalsDetails = await Promise.all(
 			proposals.map(async proposal => {
-				let id =
-					83442337736768526237678248707999845213985335799563169861116663294765881240998n
-
-				const state = await healthcareDaoContract.state(id)
+				const state = await healthcareDaoContract.state(proposal.proposalId)
 				console.log('state: ', state)
 
 				// 0 abstainVotes, 1 againsVoutes, 2 forVoutes
-				// const votes = await healthcareDaoContract.proposalVotes(id)
-				// let abstainVotes = votes[0]
-				// abstainVotes = ethers.BigNumber.from(abstainVotes).toNumber()
-				// let againsVotes = votes[1]
-				// againsVotes = ethers.BigNumber.from(againsVotes).toNumber()
-				// let forVotes = votes[2]
-				// forVotes = ethers.BigNumber.from(forVotes).toNumber()
+				const votes = await healthcareDaoContract.proposalVotes(
+					proposal.proposalId
+				)
+				let abstainVotes = votes[0]
+				abstainVotes = ethers.BigNumber.from(abstainVotes).toNumber()
+				console.log('abstainVotes: ', abstainVotes)
+				let againsVotes = votes[1]
+				againsVotes = ethers.BigNumber.from(againsVotes).toNumber()
+				console.log('againsVotes: ', againsVotes)
+				let forVotes = votes[2]
+				forVotes = ethers.BigNumber.from(forVotes).toNumber()
+				console.log('forVotes: ', forVotes)
 
 				return {
 					description: proposal.description,
-					id,
+					id: proposal.proposalId,
 					required: proposal.required,
 					state,
 					title: proposal.title,
 					votes: {
-						abstainVotes: 0,
-						againsVotes: 0,
-						forVotes: 3
+						abstainVotes,
+						againsVotes,
+						forVotes
 					},
 					wallet: proposal.wallet
 				}

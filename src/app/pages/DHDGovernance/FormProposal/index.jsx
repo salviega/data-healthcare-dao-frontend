@@ -31,7 +31,11 @@ export function FormProposal(props) {
 
 		contracts.healthcareDaoContract.on('ProposalCreated', async proposalId => {
 			const proposalIdParsed = ethers.BigNumber.from(proposalId).toString()
-			await createItem({ ...info, id: proposalIdParsed, wallet: user.address })
+			await createItem({
+				...info,
+				proposalId: proposalIdParsed,
+				wallet: user.address
+			})
 			window.alert('Proposal generated')
 			dispatch(setLoading(false))
 		})
@@ -48,7 +52,8 @@ export function FormProposal(props) {
 			[contracts.fundsContract.address],
 			[0],
 			[encodedFunctionCall],
-			proposal
+			proposal,
+			{ gasLimit: 250000 }
 		)
 	}
 	return (

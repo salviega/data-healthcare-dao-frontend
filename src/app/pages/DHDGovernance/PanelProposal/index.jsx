@@ -6,6 +6,8 @@ import { ethers } from 'ethers'
 export function PanelProposal(props) {
 	const { proposal, user, contracts, dispatch } = props
 
+	console.log('proposal: ', proposal)
+
 	const onCastVoteWithReason = async () => {
 		// dispatch(setLoading(true))
 
@@ -137,7 +139,7 @@ export function PanelProposal(props) {
 			<p className='panel__description'>{proposal.description}</p>
 			<div className='panel-stat'>
 				<p className='panel-stat__item'>
-					Proposal made by: {String(proposal.wallet).slice(28) + '...'}
+					Proposal made by: {String(proposal.wallet).slice(38) + '...'}
 				</p>
 				<p className='panel-stat__item'>Cost: {proposal.required} FIL</p>
 			</div>
