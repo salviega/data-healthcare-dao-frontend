@@ -134,7 +134,7 @@ export function PanelProposal(props) {
 							{/* <p className='panel-stat-container-vote__deadline'>
 								Deadline: 0 days
 							</p> */}
-							{proposal.state === 2 && (
+							{proposal.state === 1 && (
 								<button
 									className='panel-stat-container-vote__approve'
 									onClick={onCastVoteWithReason}
@@ -160,7 +160,7 @@ function currentStatus(state) {
 	//  0 Pending
 	else if (state === 1)
 		return (
-			<div className='proposal__status' style={{ color: 'red' }}>
+			<div className='proposal__status' style={{ color: 'violet' }}>
 				Active
 			</div>
 		)

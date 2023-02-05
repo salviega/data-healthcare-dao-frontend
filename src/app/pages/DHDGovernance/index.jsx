@@ -113,6 +113,7 @@ export function DHDGovernance() {
 				/>
 			)}
 			{proposals?.map((proposal, index) => (
+				// proposal.state !== 3 &&
 				<PanelProposal
 					key={index}
 					proposal={proposal}

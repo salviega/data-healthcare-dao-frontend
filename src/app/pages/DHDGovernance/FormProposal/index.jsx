@@ -31,7 +31,9 @@ export function FormProposal(props) {
 		const requiredParsed = parseInt(info.required)
 
 		if (requiredParsed >= totalAsserts) {
-			window.alert('Required value is wrong, please change the required value')
+			window.alert(
+				'Required value is wrong, it must greater than contract funds'
+			)
 			dispatch(setLoading(false))
 			return
 		}
@@ -97,7 +99,6 @@ export function FormProposal(props) {
 				className='form__input'
 				placeholder='FIL'
 				type='number'
-				min='0.000000000000000009'
 				required
 				ref={required}
 			></input>
