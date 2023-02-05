@@ -30,7 +30,7 @@ export function FormProposal(props) {
 		}
 		const requiredParsed = parseInt(info.required)
 
-		if (requiredParsed >= totalAsserts || requiredParsed === 0) {
+		if (requiredParsed <= totalAsserts || requiredParsed === 0) {
 			window.alert(
 				'Required value is wrong, it must be less or same than contract funds'
 			)
@@ -81,7 +81,7 @@ export function FormProposal(props) {
 		<form className='form' onSubmit={onPropose}>
 			<input
 				className='form__input'
-				placeholder='form title'
+				placeholder='Proposal title'
 				type='text'
 				maxLength='100'
 				required
@@ -89,7 +89,7 @@ export function FormProposal(props) {
 			></input>
 			<input
 				className='form__input'
-				placeholder='form description'
+				placeholder='Proposal description'
 				type='text'
 				maxLength='280'
 				required

@@ -84,6 +84,7 @@ export function DHDAcquireData() {
 
 	return (
 		<div className='acquire'>
+			<div className='acquire-spacer' />
 			<p className='acquire__title' />
 			<p className='acquire__subtitle'>
 				Access hundreds of records on health tracking through our secure

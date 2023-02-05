@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
 import { getProposalsDetails } from '../store/actions/proposalActions'
 import { Spinner } from './shared/Spinner'
+import { Footer } from './shared/Footer'
 
 function App() {
 	const loading = useSelector(state => state.ui.loading)
@@ -29,6 +30,7 @@ function App() {
 							<Route path='*' element={<Navigate replace to='/' />} />
 						</Routes>
 					</main>
+					<Footer />
 				</React.Fragment>
 			)}
 		</>
