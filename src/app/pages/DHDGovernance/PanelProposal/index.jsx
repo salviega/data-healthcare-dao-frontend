@@ -55,7 +55,8 @@ export function PanelProposal(props) {
 			[contracts.fundsContract.address],
 			[0],
 			[encodedFunctionCall],
-			descriptionHash
+			descriptionHash,
+			{ gasLimit: 250000 }
 		)
 
 		user.provider
@@ -89,74 +90,44 @@ export function PanelProposal(props) {
 			})
 	}
 
-	const onExecute = async () => {
-		const encodedFunctionCall =
-			contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
-				proposal.wallet,
-				ethers.utils.parseEther(proposal.required)
-			])
-
-		const currentProposal = `${proposal.title}: ${proposal.description}. Cost: ${proposal.required} FIl`
-		const descriptionHash = ethers.utils.keccak256(
-			ethers.utils.toUtf8Bytes(currentProposal)
-		)
-
-		const tx = await contracts.healthcareDaoContract.execute(
-			[contracts.fundsContract.address],
-			[0],
-			[encodedFunctionCall],
-			descriptionHash,
-			{ gasLimit: 250000 }
-		)
-
-		user.provider
-			.waitForTransaction(tx.hash)
-			.then(_response => {
-				setTimeout(() => {
-					window.alert('Proposal executed')
-					dispatch(setLoading(false))
-				}, 3000)
-			})
-			.catch(error => {
-				console.log('error: ', error)
-				window.alert('There war an error, look the console')
-				dispatch(setLoading(false))
-			})
-	}
-
 	return (
 		<div className='panel'>
 			<div className='panel-state'>
-				<p className='panel-state__text'>{currentStatus(proposal.state)}</p>
-				<button className='panel-state__queue' onClick={onQueueAndExecute}>
-					QUEUE
-				</button>
-				<button className='panel-state__queue' onClick={onExecute}>
-					EXECUTE
-				</button>
+				<p className='panel__title'>{proposal.title}</p>
+				<div className='panel-state'>
+					<p className='panel-state__text'>{currentStatus(proposal.state)}</p>
+					<button className='panel-state__queue' onClick={onQueueAndExecute}>
+						EXECUTE
+					</button>
+				</div>
 			</div>
-			<p className='panel__title'>{proposal.title}</p>
 			<p className='panel__description'>{proposal.description}</p>
 			<div className='panel-stat'>
 				<p className='panel-stat__item'>
 					Proposal made by: {String(proposal.wallet).slice(38) + '...'}
 				</p>
-				<p className='panel-stat__item'>Cost: {proposal.required} FIL</p>
-			</div>
-			{
-				<div className='panel-vote'>
-					<p className='panel-vote__deadline'>
-						Votes: {proposal.votes.forVotes}
+				<div className='panel-stat-container'>
+					<p className='panel-stat-container__item'>
+						Cost: {proposal.required} FIL
 					</p>
-					<p className='panel-vote__deadline'>Time remaining: 0days // TODO</p>
-					<button
-						className='panel-vote__approve'
-						onClick={onCastVoteWithReason}
-					>
-						VOTE
-					</button>
+					{
+						<div className='panel-stat-container-vote'>
+							<p className='panel-stat-container-vote__deadline'>
+								Votes: {proposal.votes.forVotes}
+							</p>
+							{/* <p className='panel-stat-container-vote__deadline'>
+								Deadline: 0 days
+							</p> */}
+							<button
+								className='panel-stat-container-vote__approve'
+								onClick={onCastVoteWithReason}
+							>
+								VOTE
+							</button>
+						</div>
+					}
 				</div>
-			}
+			</div>
 		</div>
 	)
 }
