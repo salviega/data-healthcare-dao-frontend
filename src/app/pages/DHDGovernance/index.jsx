@@ -67,7 +67,8 @@ export function DHDGovernance() {
 	useEffect(() => {
 		const fetch = async () => {
 			const funds = await contracts.fundsContract.totalAsserts()
-			setTotalAsserts(ethers.BigNumber.from(funds).toNumber())
+			// setTotalAsserts(ethers.BigNumber.from(funds).toNumber())
+			setTotalAsserts(ethers.utils.formatEther(funds))
 			setSincronized(true)
 		}
 

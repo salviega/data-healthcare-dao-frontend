@@ -7,6 +7,8 @@ import { getProposalsDetails } from '../../../../store/actions/proposalActions'
 export function PanelProposal(props) {
 	const { proposal, user, contracts, dispatch, setSincronized, onError } = props
 
+	console.log('proposal.votes.forVotes: ', proposal.votes.forVotes)
+
 	const onCastVoteWithReason = async () => {
 		dispatch(setLoading(true))
 
