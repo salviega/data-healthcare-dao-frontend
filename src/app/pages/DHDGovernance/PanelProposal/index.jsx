@@ -110,7 +110,7 @@ export function PanelProposal(props) {
 				<p className='panel__title'>{proposal.title}</p>
 				<div className='panel-state'>
 					<p className='panel-state__text'>{currentStatus(proposal.state)}</p>
-					{proposal.state === 4 && (
+					{proposal.state === 5 && (
 						<button className='panel-state__queue' onClick={onQueueAndExecute}>
 							EXECUTE
 						</button>
@@ -188,7 +188,7 @@ function currentStatus(state) {
 	//  4 Succeeded
 	else if (state === 5)
 		return (
-			<div className='proposal__status' style={{ color: 'yellow' }}>
+			<div className='proposal__status' style={{ color: 'orange' }}>
 				Queued
 			</div>
 		)
