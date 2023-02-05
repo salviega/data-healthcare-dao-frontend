@@ -8,10 +8,11 @@ export const authAction = {
 }
 
 export const contractAction = {
-	DESTROY_CONTRACT: 'DESTRO_CONTRACTS',
+	DESTROY_CONTRACT: 'DESTROY_CONTRACTS',
 	MAKE_CONTRACTS: 'MAKE CONTRACTS'
 }
 
 export const proposalAction = {
+	DESTROY_PROPOSALS: 'DESTROY',
 	SET_PROPOSALS: 'SET PROPOSALS'
 }

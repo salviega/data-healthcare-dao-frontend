@@ -10,6 +10,11 @@ export const setProposals = payload => ({
 	payload
 })
 
+export const destroyProposals = payload => ({
+	type: proposalAction.DESTROY_PROPOSALS,
+	payload
+})
+
 export const getProposalsDetails =
 	(proposalsDetails = []) =>
 	async dispatch => {
