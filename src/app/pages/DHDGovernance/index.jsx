@@ -104,6 +104,7 @@ export function DHDGovernance() {
 				<FormProposal
 					user={user}
 					contracts={contracts}
+					totalAsserts={totalAsserts}
 					createItem={createItem}
 					dispatch={dispatch}
 					showProposalForm={showProposalForm}

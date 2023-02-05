@@ -8,6 +8,7 @@ export function FormProposal(props) {
 	const {
 		user,
 		contracts,
+		totalAsserts,
 		createItem,
 		dispatch,
 		showProposalForm,
@@ -27,16 +28,13 @@ export function FormProposal(props) {
 			description: description.current.value,
 			required: required.current.value
 		}
-		// const requiredParsed = parseInt(info.required)
+		const requiredParsed = parseInt(info.required)
 
-		// let totalAsserts = await contracts.fundsContract.totalAsserts()
-		// totalAsserts = ethers.BigNumber.from(totalAsserts).toNumber()
-
-		// if (requiredParsed > totalAsserts) {
-		// 	window.alert('Required value is wrong, please change the required value')
-		// 	dispatch(setLoading(false))
-		// 	return
-		// }
+		if (requiredParsed >= totalAsserts) {
+			window.alert('Required value is wrong, please change the required value')
+			dispatch(setLoading(false))
+			return
+		}
 
 		showProposalForm()
 		dispatch(setLoading(true))

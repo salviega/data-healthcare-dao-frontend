@@ -45,6 +45,8 @@ export function DHDAcquireData() {
 			TIME_STAMP: 0,
 			ID_QUERY: 0
 		}
+		deadline.setDate(deadline.getDate() + parseInt(time.current.value))
+		info.TIME_STAMP = deadline.getTime() // timestamp
 
 		if (parseInt(info.MIN_EDAD) >= parseInt(info.MAX_EDAD)) {
 			window.alert('Min age greater than max age')
@@ -56,9 +58,6 @@ export function DHDAcquireData() {
 			window.alert('Min weight greater than max wight')
 			return
 		}
-		deadline.setDate(deadline.getDate() + parseInt(time.current.value))
-		console.log(deadline.getTime())
-		info.TIME_STAMP = deadline.getTime() // timestamp
 
 		contracts.fundsContract.on('ArrangeData', async (queryId, deadline) => {
 			const queryIdParsed = ethers.BigNumber.from(queryId).toNumber()
@@ -74,7 +73,7 @@ export function DHDAcquireData() {
 		})
 
 		await contracts.fundsContract.rentData(info.TIME_STAMP, {
-			value: ethers.utils.parseEther('0.01'),
+			value: ethers.utils.parseEther('0.1'),
 			gasLimit: 250000
 		})
 	}
