@@ -2,14 +2,13 @@ import './PanelProposal.scss'
 import React from 'react'
 import { setLoading } from '../../../../store/actions/uiActions'
 import { ethers } from 'ethers'
+import { getProposalsDetails } from '../../../../store/actions/proposalActions'
 
 export function PanelProposal(props) {
-	const { proposal, user, contracts, dispatch } = props
-
-	console.log('proposal: ', proposal)
+	const { proposal, user, contracts, dispatch, setSincronized, onError } = props
 
 	const onCastVoteWithReason = async () => {
-		// dispatch(setLoading(true))
+		dispatch(setLoading(true))
 
 		// let myVoteTokens = await contracts.healthcareTokenContract.balanceOf(
 		// 	user.address
@@ -21,73 +20,86 @@ export function PanelProposal(props) {
 		// 	return
 		// }
 
-		const voteWay = 1
-		const reason = 'I like the propol because...'
+		try {
+			const voteWay = 1
+			const reason = 'I like the propol because...'
 
-		const tx = await contracts.healthcareDaoContract.castVoteWithReason(
-			proposal.id,
-			voteWay,
-			reason,
-			{ gasLimit: 250000 }
-		)
-		user.provider.waitForTransaction(tx.hash).then(async response => {
-			console.log(response)
-			setTimeout(() => {
-				window.alert('Voting sucessful')
-				dispatch(setLoading(false))
-			}, 3000)
-		})
+			const tx = await contracts.healthcareDaoContract.castVoteWithReason(
+				proposal.id,
+				voteWay,
+				reason,
+				{ gasLimit: 250000 }
+			)
+			user.provider.waitForTransaction(tx.hash).then(async response => {
+				setTimeout(() => {
+					window.alert('Voting sucessful')
+					setSincronized(false)
+					dispatch(getProposalsDetails())
+					dispatch(setLoading(false))
+				}, 3000)
+			})
+		} catch (error) {
+			onError(error)
+		}
 	}
 
 	const onQueueAndExecute = async () => {
-		const encodedFunctionCall =
-			contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
-				proposal.wallet,
-				ethers.utils.parseEther(proposal.required)
-			])
+		dispatch(setLoading(true))
 
-		const currentProposal = `${proposal.title}: ${proposal.description}. Cost: ${proposal.required} FIl`
-		const descriptionHash = ethers.utils.keccak256(
-			ethers.utils.toUtf8Bytes(currentProposal)
-		)
+		try {
+			const encodedFunctionCall =
+				contracts.fundsContract.interface.encodeFunctionData('transferFunds', [
+					proposal.wallet,
+					ethers.utils.parseEther(proposal.required)
+				])
 
-		const tx = await contracts.healthcareDaoContract.queue(
-			[contracts.fundsContract.address],
-			[0],
-			[encodedFunctionCall],
-			descriptionHash,
-			{ gasLimit: 250000 }
-		)
+			const currentProposal = `${proposal.title}: ${proposal.description}. Cost: ${proposal.required} FIl`
+			const descriptionHash = ethers.utils.keccak256(
+				ethers.utils.toUtf8Bytes(currentProposal)
+			)
 
-		user.provider
-			.waitForTransaction(tx.hash)
-			.then(async _response => {
-				const tx2 = await contracts.healthcareDaoContract.execute(
-					[contracts.fundsContract.address],
-					[0],
-					[encodedFunctionCall],
-					descriptionHash,
-					{ gasLimit: 250000 }
-				)
-				user.provider
-					.waitForTransaction(tx2.hash)
-					.then(_response2 => {
-						setTimeout(() => {
-							window.alert('Th proposal was executed')
+			const tx = await contracts.healthcareDaoContract.queue(
+				[contracts.fundsContract.address],
+				[0],
+				[encodedFunctionCall],
+				descriptionHash,
+				{ gasLimit: 250000 }
+			)
+
+			user.provider
+				.waitForTransaction(tx.hash)
+				.then(async _response => {
+					const tx2 = await contracts.healthcareDaoContract.execute(
+						[contracts.fundsContract.address],
+						[0],
+						[encodedFunctionCall],
+						descriptionHash,
+						{ gasLimit: 250000 }
+					)
+					user.provider
+						.waitForTransaction(tx2.hash)
+						.then(_response2 => {
+							setTimeout(() => {
+								window.alert('Th proposal was executed')
+								setSincronized(false)
+								dispatch(getProposalsDetails())
+								dispatch(setLoading(false))
+							}, 3000)
+						})
+						.catch(error => {
+							console.log('error: ', error)
+							window.alert('There war an error, look the console')
 							dispatch(setLoading(false))
-						}, 3000)
-					})
-					.catch(error => {
-						console.log('error: ', error)
-						window.alert('There war an error, look the console')
-						dispatch(setLoading(false))
-					})
-			})
-			.catch(error => {
-				console.log('error: ', error)
-				window.alert('There war an error, look the console')
-				dispatch(setLoading(false))
-			})
+						})
+				})
+				.catch(error => {
+					console.log('error: ', error)
+					window.alert('There war an error, look the console')
+					dispatch(setLoading(false))
+				})
+		} catch (error) {
+			onError(error)
+		}
 	}
 
 	return (
@@ -96,9 +108,11 @@ export function PanelProposal(props) {
 				<p className='panel__title'>{proposal.title}</p>
 				<div className='panel-state'>
 					<p className='panel-state__text'>{currentStatus(proposal.state)}</p>
-					<button className='panel-state__queue' onClick={onQueueAndExecute}>
-						EXECUTE
-					</button>
+					{proposal.state === 4 && (
+						<button className='panel-state__queue' onClick={onQueueAndExecute}>
+							EXECUTE
+						</button>
+					)}
 				</div>
 			</div>
 			<p className='panel__description'>{proposal.description}</p>
@@ -118,12 +132,14 @@ export function PanelProposal(props) {
 							{/* <p className='panel-stat-container-vote__deadline'>
 								Deadline: 0 days
 							</p> */}
-							<button
-								className='panel-stat-container-vote__approve'
-								onClick={onCastVoteWithReason}
-							>
-								VOTE
-							</button>
+							{proposal.state === 2 && (
+								<button
+									className='panel-stat-container-vote__approve'
+									onClick={onCastVoteWithReason}
+								>
+									VOTE
+								</button>
+							)}
 						</div>
 					}
 				</div>

@@ -13,6 +13,7 @@ export function DHDGovernance() {
 	const user = useSelector(store => store.auth)
 	const contracts = useSelector(store => store.contracts)
 	const proposals = useSelector(store => store.proposals)
+	const [sincronized, setSincronized] = useState(false)
 	const [doProposal, setDoProposal] = useState(false)
 	const [totalAsserts, setTotalAsserts] = useState(0)
 	const { createItem } = firebaseApi()
@@ -37,6 +38,7 @@ export function DHDGovernance() {
 						.then(_response2 => {
 							setTimeout(() => {
 								window.alert('1 DHD vote token was minted')
+								setSincronized(false)
 								dispatch(setLoading(false))
 							}, 3000)
 						})
@@ -66,10 +68,11 @@ export function DHDGovernance() {
 		const fetch = async () => {
 			const funds = await contracts.fundsContract.totalAsserts()
 			setTotalAsserts(ethers.BigNumber.from(funds).toNumber())
+			setSincronized(true)
 		}
 
 		fetch()
-	}, [])
+	}, [sincronized])
 
 	if (user.address === 'Connect wallet') {
 		return <Navigate to='/' />
@@ -102,6 +105,9 @@ export function DHDGovernance() {
 					contracts={contracts}
 					createItem={createItem}
 					dispatch={dispatch}
+					showProposalForm={showProposalForm}
+					setSincronized={setSincronized}
+					onError={onError}
 				/>
 			)}
 			{proposals?.map((proposal, index) => (
@@ -111,6 +117,8 @@ export function DHDGovernance() {
 					user={user}
 					contracts={contracts}
 					dispatch={dispatch}
+					setSincronized={setSincronized}
+					onError={onError}
 				/>
 			))}
 		</div>
