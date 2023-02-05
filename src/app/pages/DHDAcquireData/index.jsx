@@ -183,28 +183,15 @@ export function DHDAcquireData() {
 							ref={country}
 						></input>
 					</div>
-					<div className='acquire-container-form-section'>
+					<div className='acquire-container-form-checkbox'>
 						<div>
-							<input
-								type='radio'
-								id='huey'
-								name='drone'
-								value='huey'
-								checked
-								ref={genere}
-							/>
-							<label for='huey'>Huey</label>
+							<input type='radio' name='male' value='male' ref={genere} />
+							<label for='male'>Male</label>
 						</div>
 
 						<div>
-							<input
-								type='radio'
-								id='dewey'
-								name='drone'
-								value='dewey'
-								ref={genere}
-							/>
-							<label for='dewey'>Dewey</label>
+							<input type='radio' name='female' value='female' ref={genere} />
+							<label for='female'>Female</label>
 						</div>
 					</div>
 					<p className='acquire-container__description'>
@@ -225,7 +212,6 @@ export function DHDAcquireData() {
 					</div>
 				</form>
 			</div>
-			<Footer />
 		</div>
 	)
 }

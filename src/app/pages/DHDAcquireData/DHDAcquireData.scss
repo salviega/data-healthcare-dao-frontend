@@ -49,7 +49,7 @@
 	&-buttons {
 		max-width: 50rem;
 		max-height: max-content;
-		margin: 0rem 0rem 75.9rem 0rem;
+		margin: 0rem 0rem 65.9rem 0rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -101,7 +101,6 @@
 	&-container {
 		width: 130.868rem;
 		height: 98.4rem;
-		margin-left: 37.16rem;
 		margin-bottom: 52.998rem;
 
 		&__title {
@@ -154,6 +153,17 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
+			}
+
+			&-checkbox {
+				width: 43.431rem;
+				height: 5.6rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				gap: 2.4rem;
+				background: #ffffff;
+				border: 1px solid #000000;
 			}
 
 			#form-secundary__last {

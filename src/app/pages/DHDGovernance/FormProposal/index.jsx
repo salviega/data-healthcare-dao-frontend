@@ -29,8 +29,8 @@ export function FormProposal(props) {
 			required: required.current.value
 		}
 		const requiredParsed = parseInt(info.required)
-
-		if (requiredParsed <= totalAsserts || requiredParsed === 0) {
+		console.log(requiredParsed <= totalAsserts)
+		if (!requiredParsed <= totalAsserts && !requiredParsed > -1) {
 			window.alert(
 				'Required value is wrong, it must be less or same than contract funds'
 			)
