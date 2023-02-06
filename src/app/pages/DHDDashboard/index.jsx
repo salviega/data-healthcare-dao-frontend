@@ -1,12 +1,34 @@
 import './DHDDashboard.scss'
-import React from 'react'
-import { Footer } from '../../shared/Footer'
-import { Plot } from './Plot'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { Plot } from './Collection/Plot'
+import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import axios from 'axios'
+import { setLoading } from '../../../store/actions/uiActions'
+import harcored from '../../../assets/json/examples/getData.json'
+import { Collection } from './Collection'
+const QUERY_PROPOSAL =
+	'http://ec2-100-24-74-70.compute-1.amazonaws.com:8088/query_proposal/'
 
 export function DHDDashboard() {
 	const user = useSelector(store => store.auth)
+	const dispatch = useDispatch()
+	const [data, setData] = React.useState([])
+
+	useEffect(() => {
+		const fetchData = async () => {
+			dispatch(setLoading(true))
+			// setData(harcored)
+			const response = await axios.get(QUERY_PROPOSAL, {
+				params: { wallet: user.address }
+			})
+
+			console.log('response: ', response)
+			dispatch(setLoading(false))
+		}
+
+		fetchData()
+	}, [])
 
 	if (user.address === 'Connect wallet') {
 		return <Navigate to='/' />
@@ -14,40 +36,10 @@ export function DHDDashboard() {
 
 	return (
 		<div className='dashboard'>
-			<div className='dashboard-info'>
-				<div className='dashboard-info-personal'>
-					<p className='dashboard-info-personal__title'>My information</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<p className='dashboard-info-personal__item'>xxx</p>
-					<button className='dashboard-info-personal__update'>
-						UPDATE INFO
-					</button>
-				</div>
-				<div className='dashboard-info-notification'>
-					<p className='dashboard-info-notification__title'>Notifications</p>
-				</div>
-			</div>
-			<div className='dashboard-data'>
-				<div className='dashboard-data-owner'>
-					<p className='dashboard-data-owner__title'>Your data</p>
-					<div className='dashboard-data-owner-graphic'>
-						<Plot />
-					</div>
-				</div>
-			</div>
-			<div id='data__last' className='dashboard-data'>
-				<div className='dashboard-data-owner'>
-					<p className='dashboard-data-owner__title'>Data Requested</p>
-					<div className='dashboard-data-owner-graphic'>
-						<Plot />
-					</div>
-				</div>
-			</div>
-			<Footer />
+			<div className='dashboard-spacer' />
+			{data.map((collection, index) => (
+				<Collection key={index} collection={collection} />
+			))}
 		</div>
 	)
 }

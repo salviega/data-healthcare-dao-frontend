@@ -99,7 +99,6 @@
 	}
 
 	&-container {
-		width: 130.868rem;
 		height: 98.4rem;
 		margin-bottom: 52.998rem;
 
@@ -130,40 +129,68 @@
 		}
 
 		&-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
 			#form-primary__last {
 				margin-bottom: 4.6rem;
 			}
 
 			&__primary {
-				width: 130.868rem;
+				width: 98.151rem;
 				height: 5.6rem;
 				margin-bottom: 2.8rem;
+				padding-left: 1.4rem;
 				background: #ffffff;
 				border: 1px solid #000000;
 
 				&::placeholder {
 					padding-left: 1.501rem;
 				}
+
+				&:hover {
+					border: 0.1rem solid #6dc8b7;
+				}
 			}
 
 			&-section {
-				width: 130.868rem;
+				width: 98.151rem;
 				height: 5.6rem;
 				margin-bottom: 2.8rem;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
+
+				&-third {
+					width: 98.151rem;
+					display: flex;
+					align-items: center;
+					gap: 2.4rem;
+				}
 			}
 
 			&-checkbox {
-				width: 43.431rem;
+				width: 43.4rem;
 				height: 5.6rem;
+				margin-bottom: 2.8rem;
 				display: flex;
 				align-items: center;
 				justify-content: space-around;
 				gap: 2.4rem;
 				background: #ffffff;
 				border: 1px solid #000000;
+
+				&:hover {
+					border: 0.1rem solid #6dc8b7;
+				}
+
+				&__item {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
 			}
 
 			#form-secundary__last {
@@ -174,6 +201,7 @@
 				width: 59.231rem;
 				height: 5.6rem;
 				margin-bottom: 2.8rem;
+				padding-left: 1.4rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -183,12 +211,15 @@
 				&::placeholder {
 					padding-left: 1.501rem;
 				}
+
+				&:hover {
+					border: 0.1rem solid #6dc8b7;
+				}
 			}
 
 			&__submit {
 				width: 16.809rem;
 				height: 4.8rem;
-				margin-right: 18.3rem;
 				border: 0.1rem solid #ffffff;
 				border-radius: 5rem;
 				cursor: pointer;
@@ -201,6 +232,10 @@
 				text-align: center;
 
 				color: #ffffff;
+
+				&:hover {
+					background-color: rgb(148, 204, 195);
+				}
 			}
 		}
 	}

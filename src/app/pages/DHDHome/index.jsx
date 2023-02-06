@@ -3,11 +3,11 @@ import figure1 from '../../../assets/images/usecase-fig1.svg'
 import figure2 from '../../../assets/images/usecase-fig2.svg'
 import figure3 from '../../../assets/images/usecase-fig3.svg'
 import React from 'react'
-import { Footer } from '../../shared/Footer'
 
 export function DHDHome() {
 	return (
 		<div className='home'>
+			<div className='home-spacer' />
 			<p className='home__title' />
 			<p className='home__subtitle'>
 				​Securely record and store your health data on the blockchain
@@ -83,7 +83,6 @@ export function DHDHome() {
 					Subscribe to our newsletter
 				</button>
 			</div>
-			<Footer />
 		</div>
 	)
 }

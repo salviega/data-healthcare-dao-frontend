@@ -1,10 +1,11 @@
 import './DHDAcquireData.scss'
 import React, { useRef } from 'react'
 import { Footer } from '../../shared/Footer'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { ethers } from 'ethers'
 import axios from 'axios'
+import { setLoading } from '../../../store/actions/uiActions'
 
 const CREATE_PROPOSAL =
 	'http://ec2-100-24-74-70.compute-1.amazonaws.com:8088/form/'
@@ -12,6 +13,7 @@ const CREATE_PROPOSAL =
 export function DHDAcquireData() {
 	const user = useSelector(store => store.auth)
 	const contracts = useSelector(store => store.contracts)
+	const dispatch = useDispatch()
 
 	const institute = useRef()
 	const wallet = useRef()
@@ -45,6 +47,7 @@ export function DHDAcquireData() {
 			TIME_STAMP: 0,
 			ID_QUERY: 0
 		}
+
 		deadline.setDate(deadline.getDate() + parseInt(time.current.value))
 		info.TIME_STAMP = deadline.getTime() // timestamp
 
@@ -59,17 +62,17 @@ export function DHDAcquireData() {
 			return
 		}
 
+		// dispatch(setLoading(true))
+
 		contracts.fundsContract.on('ArrangeData', async (queryId, deadline) => {
 			const queryIdParsed = ethers.BigNumber.from(queryId).toNumber()
 			const deadlineParsed = ethers.BigNumber.from(deadline).toNumber()
-			console.log('info: ', info)
 			info.ID_QUERY = queryIdParsed
 			info.TIME_STAMP = deadlineParsed
 
 			await axios.post(CREATE_PROPOSAL, info)
 			window.alert('The acquerid data was done')
-
-			//dispatch(setLoading(false))
+			dispatch(setLoading(false))
 		})
 
 		await contracts.fundsContract.rentData(info.TIME_STAMP, {
@@ -184,28 +187,32 @@ export function DHDAcquireData() {
 						></input>
 					</div>
 					<div className='acquire-container-form-checkbox'>
-						<div>
-							<input type='radio' name='male' value='male' ref={genere} />
+						<div className='acquire-container-form-checkbox__item'>
+							<input type='checkbox' name='M' value='M' ref={genere} />
 							<label for='male'>Male</label>
 						</div>
 
-						<div>
-							<input type='radio' name='female' value='female' ref={genere} />
+						<div className='acquire-container-form-checkbox__item'>
+							<input type='checkbox' name='F' value='F' ref={genere} />
 							<label for='female'>Female</label>
 						</div>
 					</div>
-					<p className='acquire-container__description'>
+					<p
+						className='acquire-container__description'
+						id='form-section-submit'
+					>
 						The information that we will request below is of vital importance
 						since it will allow the holders of the data to make a better
 						decision
 					</p>
-					<div className='acquire-container-form-section'>
+					<div className='acquire-container-form-section-third'>
 						<input
 							className='acquire-container-form__secundary'
 							placeholder='Time you are requesting the data (on Days): 60'
 							type='text'
 							min='1'
 							required
+							style={{ width: '43.151rem' }}
 							ref={time}
 						></input>
 						<button className='acquire-container-form__submit'>SUBMIT</button>

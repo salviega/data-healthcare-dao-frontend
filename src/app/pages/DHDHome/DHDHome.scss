@@ -1,13 +1,16 @@
 .home {
-	position: absolute;
 	background-image: url(../../../assets//images/background-home.png);
 	background-repeat: no-repeat;
 	z-index: -1;
 
+	&-spacer {
+		min-height: 15vh;
+	}
+
 	&__title {
 		width: 71.3rem;
 		height: 19.8rem;
-		margin: 27rem 0rem 3.5rem 17.8rem;
+		margin: 12rem 0rem 3.5rem 17.8rem;
 		visibility: hidden;
 		font-family: 'Roboto';
 		font-style: normal;

@@ -1,21 +1,12 @@
-.dashboard {
-	// height: 393.9rem;
-	background-image: url(../../../assets//images/background-dashboard.png);
-	// background-repeat: no-repeat;
-	// z-index: -1;
-
+.collection {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
-	&-spacer {
-		min-height: 15vh;
-	}
-
 	&-info {
 		margin-top: 12rem;
-		margin-bottom: 12rem;
+		margin-bottom: 0.6rem;
 		display: flex;
 		justify-content: space-around;
 
@@ -36,14 +27,14 @@
 				width: 64.9rem;
 				height: 6.3rem;
 				margin-left: 12rem;
-				margin-bottom: 4.1rem;
+				margin-bottom: 0.6rem;
 				font-family: 'Roboto';
 				font-style: normal;
 				font-weight: 400;
 				font-size: 2.4rem;
 				line-height: 2.8rem;
 
-				color: #8989a2;
+				color: black;
 			}
 
 			&__update {
