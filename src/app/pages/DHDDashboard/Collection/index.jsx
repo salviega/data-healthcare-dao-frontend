@@ -4,16 +4,21 @@ import { Plot } from './Plot'
 
 export function Collection (props) {
   const { collection } = props
+  console.log('collection: ', collection)
+
   const information = {
     bpm: collection.BPM,
     spo2: collection.SPO2,
     date: collection.DATE_C
   }
+
   return (
     <>
       <div className='collection-info'>
         <div className='collection-info-personal'>
-          <p className='collection-info-personal__title'>My information</p>
+          <p className='collection-info-personal__title'>
+            Query №{collection.USER.ID_QUERY} ⚡️
+          </p>
           <p className='collection-info-personal__item'>
             <b>Wallet</b>: {collection.USER.WALLET}
           </p>
@@ -46,9 +51,7 @@ export function Collection (props) {
           <p className='collection-info-personal__item'>
             <b>Deadline</b>: {collection.USER.TIME_STAMP}
           </p>
-          {/* <button className='collection-info-personal__update'>
-						UPDATE INFO
-					</button> */}
+          {/* <button className='collection-info-personal__update'>GET data</button> */}
         </div>
         <div className='collection-info-notification'>
           <p className='collection-info-notification__title'>Notifications</p>

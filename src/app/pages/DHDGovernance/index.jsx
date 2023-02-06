@@ -18,8 +18,6 @@ export function DHDGovernance () {
   const [totalAsserts, setTotalAsserts] = useState(0)
   const { createItem } = firebaseApi()
 
-  useEffect(() => {})
-
   const onSafeMint = async () => {
     dispatch(setLoading(true))
 

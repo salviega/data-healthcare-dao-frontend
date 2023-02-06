@@ -1,44 +1,63 @@
 import './DHDDashboard.scss'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios'
 import { setLoading } from '../../../store/actions/uiActions'
 import { Collection } from './Collection'
+import { Spinner } from '../../shared/Spinner'
 
-export function DHDDashboard() {
-	const user = useSelector(store => store.auth)
-	const dispatch = useDispatch()
-	const [data, setData] = React.useState([])
+export function DHDDashboard () {
+  const user = useSelector(store => store.auth)
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [active, setActive] = useState(false)
 
-	useEffect(() => {
-		const fetchData = async () => {
-			// dispatch(setLoading(true))
-			// const response = await axios.get('https://data-healthcare-dao-node.onrender.com/getData', {
-			// 	params: { wallet: user.address }
-			// })
+  const fetchData = async () => {
+    setLoading(true)
+    const response = await axios.get(
+      'https://data-healthcare-dao-node.onrender.com/getData',
+      {
+        params: { wallet: user.address }
+      }
+    )
 
-			// console.log('response.data: ', response.data)
-			dispatch(setLoading(false))
-		}
+    setData(response.data)
+    setLoading(false)
+    setActive(true)
+  }
 
-		fetchData()
-	}, [])
+  if (user.address === 'Connect wallet') {
+    return <Navigate to='/' />
+  }
 
-	if (user.address === 'Connect wallet') {
-		return <Navigate to='/' />
-	}
-
-	return (
-		<div className='dashboard'>
-			<div className='dashboard-spacer' />
-			{data.length === 0 ? (
-				<p className='dashboard__nodata'>You have not acquired data yet 😥😥</p>
-			) : (
-				data.map((collection, index) => (
-					<Collection key={index} collection={collection} />
-				))
-			)}
-		</div>
-	)
+  return (
+    <>
+      {loading
+        ? (
+          <Spinner />
+          )
+        : (
+          <div className='dashboard'>
+            <div className='dashboard-spacer' />
+            {!active
+              ? (
+                <div className='dashboard-container'>
+                  <p className='dashboard__nodata'>
+                    You have not acquired data yet 😥😥
+          </p>
+                  <button className='dashboard__fetch' onClick={fetchData}>
+                    GET data
+          </button>
+                </div>
+                )
+              : (
+					  data.map((collection, index) => (
+  <Collection key={index} collection={collection} />
+					  ))
+                )}
+          </div>
+          )}
+    </>
+  )
 }

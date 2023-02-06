@@ -3,10 +3,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	// position: absolute;
 	background-image: url(../../../assets//images/background-dashboard.png);
-	// background-repeat: no-repeat;
-	// z-index: -1;
+
 	&-spacer {
 		min-height: 15vh;
 	}
@@ -20,7 +18,6 @@
 		justify-content: center;
 
 		&__item {
-			// width: 28rem;
 			display: flex;
 			justify-content: right;
 			font-family: 'Roboto';
