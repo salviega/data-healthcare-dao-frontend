@@ -14,6 +14,10 @@ Repository url: https://github.com/salviega/data-healthcare-dao-node
 
 Repository url: https://github.com/Oriojas/data_healthcare_dao_sensors
 
+### Data Healthcare DAO - UI Figma:
+
+https://www.figma.com/file/5otehmOHob3gACK2TyoGyK/DHD?node-id=0%3A1&t=WZjmbRC4pPqu3Wbc-0
+
 ### Fleek deploy
 
 Fleek url: https://raspy-wood-0479.on.fleek.co

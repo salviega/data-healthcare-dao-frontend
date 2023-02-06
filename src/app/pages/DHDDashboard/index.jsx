@@ -16,13 +16,13 @@ export function DHDDashboard() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			// dispatch(setLoading(true))
-			// setData(harcored)
-			const response = await axios.get('http://localhost:8080/getData', {
-				params: { wallet: user.address }
-			})
+			dispatch(setLoading(true))
+			setData(harcored)
+			// const response = await axios.get('http://localhost:8080/getData', {
+			// 	params: { wallet: user.address }
+			// })
 
-			console.log('response: ', response)
+			// console.log('response: ', response)
 			dispatch(setLoading(false))
 		}
 
