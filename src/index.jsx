@@ -8,11 +8,11 @@ import './styles/global.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<HashRouter>
-				<App />
-			</HashRouter>
-		</Provider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
+  </React.StrictMode>
 )

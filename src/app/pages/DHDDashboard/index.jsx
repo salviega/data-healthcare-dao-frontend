@@ -1,13 +1,10 @@
 import './DHDDashboard.scss'
 import React, { useEffect } from 'react'
-import { Plot } from './Collection/Plot'
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios'
 import { setLoading } from '../../../store/actions/uiActions'
-import harcored from '../../../assets/json/examples/getData.json'
 import { Collection } from './Collection'
-const QUERY_PROPOSAL = 'https://data-healthcare-dao-node.onrender.com/getData'
 
 export function DHDDashboard() {
 	const user = useSelector(store => store.auth)
@@ -16,13 +13,12 @@ export function DHDDashboard() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			dispatch(setLoading(true))
-			setData(harcored)
-			// const response = await axios.get('http://localhost:8080/getData', {
+			// dispatch(setLoading(true))
+			// const response = await axios.get('https://data-healthcare-dao-node.onrender.com/getData', {
 			// 	params: { wallet: user.address }
 			// })
 
-			// console.log('response: ', response)
+			// console.log('response.data: ', response.data)
 			dispatch(setLoading(false))
 		}
 
@@ -36,9 +32,13 @@ export function DHDDashboard() {
 	return (
 		<div className='dashboard'>
 			<div className='dashboard-spacer' />
-			{data.map((collection, index) => (
-				<Collection key={index} collection={collection} />
-			))}
+			{data.length === 0 ? (
+				<p className='dashboard__nodata'>You have not acquired data yet 😥😥</p>
+			) : (
+				data.map((collection, index) => (
+					<Collection key={index} collection={collection} />
+				))
+			)}
 		</div>
 	)
 }

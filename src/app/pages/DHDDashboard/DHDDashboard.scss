@@ -13,6 +13,21 @@
 		min-height: 15vh;
 	}
 
+	&__nodata {
+		height: 55vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 2.4rem;
+		line-height: 5.6rem;
+		text-align: center;
+
+		color: #160637;
+	}
+
 	&-info {
 		margin-top: 12rem;
 		margin-bottom: 12rem;
