@@ -1,10 +1,14 @@
 # Data Healthcare DAO - frontend
 
-Data Healthcare DAO: FVM space warp hackthon
+Data Healthcare DAO: FVM space warp hackathon
 
 ### Data Healthcare DAO - contracts:
 
-Repository url: https://github.com/salviega/data-healthcare-dao-hardhat.git
+Repository url: https://github.com/salviega/data-healthcare-dao-hardhat
+
+### Data Healthcare DAO - backend node:
+
+Repository url: https://github.com/salviega/data-healthcare-dao-node
 
 ### Data Healthcare DAO - backend python:
 

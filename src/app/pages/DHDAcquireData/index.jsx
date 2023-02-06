@@ -23,7 +23,7 @@ export function DHDAcquireData() {
 	const minHeight = useRef()
 	const maxHeight = useRef()
 	const minWeight = useRef()
-	const maxWight = useRef()
+	const maxWeight = useRef()
 	const country = useRef()
 	const genere = useRef()
 	const time = useRef()
@@ -38,15 +38,17 @@ export function DHDAcquireData() {
 			NOMBRE_PROYECTO: project.current.value,
 			MIN_EDAD: parseInt(minAge.current.value),
 			MAX_EDAD: parseInt(maxAge.current.value),
-			MIN_PESO: parseInt(minHeight.current.value),
-			MAX_PESO: parseInt(maxHeight.current.value),
-			MIN_ESTATURA: parseInt(minWeight.current.value),
-			MAX_ESTATURA: parseInt(maxWight.current.value),
+			MIN_PESO: parseInt(minWeight.current.value),
+			MAX_PESO: parseInt(maxWeight.current.value),
+			MIN_ESTATURA: parseInt(minHeight.current.value),
+			MAX_ESTATURA: parseInt(maxHeight.current.value),
 			PAIS: country.current.value,
 			GENERO: genere.current.value,
 			TIME_STAMP: 0,
 			ID_QUERY: 0
 		}
+
+		console.log('info: ', info)
 
 		deadline.setDate(deadline.getDate() + parseInt(time.current.value))
 		info.TIME_STAMP = deadline.getTime() // timestamp
@@ -69,6 +71,8 @@ export function DHDAcquireData() {
 			const deadlineParsed = ethers.BigNumber.from(deadline).toNumber()
 			info.ID_QUERY = queryIdParsed
 			info.TIME_STAMP = deadlineParsed
+
+			console.log('info: ', info)
 
 			await axios.post(CREATE_PROPOSAL, info)
 			window.alert('The acquerid data was done')
@@ -174,11 +178,11 @@ export function DHDAcquireData() {
 						></input>
 						<input
 							className='acquire-container-form__secundary'
-							placeholder='Min weight on kilograms: 95'
+							placeholder='Max weight on kilograms: 95'
 							type='number'
 							min='1'
 							required
-							ref={maxWight}
+							ref={maxWeight}
 						></input>
 						<input
 							className='acquire-container-form__secundary'

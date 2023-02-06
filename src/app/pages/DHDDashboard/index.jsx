@@ -7,8 +7,7 @@ import axios from 'axios'
 import { setLoading } from '../../../store/actions/uiActions'
 import harcored from '../../../assets/json/examples/getData.json'
 import { Collection } from './Collection'
-const QUERY_PROPOSAL =
-	'http://ec2-100-24-74-70.compute-1.amazonaws.com:8088/query_proposal/'
+const QUERY_PROPOSAL = 'https://data-healthcare-dao-node.onrender.com/getData'
 
 export function DHDDashboard() {
 	const user = useSelector(store => store.auth)
@@ -17,9 +16,9 @@ export function DHDDashboard() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			dispatch(setLoading(true))
+			// dispatch(setLoading(true))
 			// setData(harcored)
-			const response = await axios.get(QUERY_PROPOSAL, {
+			const response = await axios.get('http://localhost:8080/getData', {
 				params: { wallet: user.address }
 			})
 
