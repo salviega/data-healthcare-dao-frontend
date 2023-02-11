@@ -3,45 +3,8 @@ import figure1 from '../../../assets/images/usecase-fig1.svg'
 import figure2 from '../../../assets/images/usecase-fig2.svg'
 import figure3 from '../../../assets/images/usecase-fig3.svg'
 import React from 'react'
-import { ethers } from 'ethers'
-import { NETWORK } from '../../../config/helper.config'
-import { useDispatch } from 'react-redux'
-import { destroyProposals } from '../../../store/actions/proposalActions'
-import { destroyContracts } from '../../../store/actions/contractActions'
-import { logout } from '../../../store/actions/authActions'
-import { useNavigate } from 'react-router-dom'
 
 export function DHDHome() {
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
-
-	React.useEffect(() => {
-		const currentNetwork = async () => {
-			const web3Provider = new ethers.providers.Web3Provider(window.ethereum)
-			const web3Signer = web3Provider.getSigner()
-			const chainId = await web3Signer.getChainId()
-			return chainId
-		}
-		if (window.ethereum) {
-			window.ethereum.on('chainChanged', () => {
-				currentNetwork().then(response => {
-					if (response !== NETWORK.chainId) {
-						dispatch(destroyProposals())
-						dispatch(destroyContracts())
-						dispatch(logout())
-						navigate('/')
-					}
-				})
-			})
-			window.ethereum.on('accountsChanged', () => {
-				dispatch(destroyProposals())
-				dispatch(destroyContracts())
-				dispatch(logout())
-				navigate('/')
-			})
-		}
-	}, [])
-
 	return (
 		<div className='home'>
 			<div className='home-spacer' />

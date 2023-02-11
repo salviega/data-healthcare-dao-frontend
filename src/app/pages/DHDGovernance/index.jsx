@@ -40,9 +40,7 @@ export function DHDGovernance() {
 			})
 
 			contracts.healthcareTokenContract.once('tokenDelegated', response => {
-				contracts.healthcareTokenContract.window.alert(
-					'1 DHD vote token was minted'
-				)
+				window.alert('1 DHD vote token was minted')
 				setSincronized(false)
 				dispatch(setLoading(false))
 			})
@@ -84,7 +82,7 @@ export function DHDGovernance() {
 		fetch()
 	}, [sincronized])
 
-	if (user.address === 'Connect wallet') {
+	if (user.address === 'Login') {
 		return <Navigate to='/' />
 	}
 

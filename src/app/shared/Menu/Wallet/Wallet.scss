@@ -15,3 +15,17 @@
 	text-align: center;
 	color: #e7eff2;
 }
+
+// Algunos estilos provocan que imagen de cerrado y de regreso dentro del
+// modal del login se vean mas grandes, por lo que se
+// agregan estas lineas.
+.w3a-header__button,
+.w3ajs-close-btn {
+	width: 2em;
+	height: 2em;
+}
+.w3a-external-back,
+.w3ajs-external-back {
+	width: 2em;
+	height: 2em;
+}
